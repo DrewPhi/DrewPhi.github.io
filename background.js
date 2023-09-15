@@ -1,5 +1,5 @@
 let particles = [];
-const num = 10000;
+const num = 1000;
 
 const noiseScale = 0.01 / 2;
 
@@ -8,15 +8,24 @@ let yellowColor;
 let silverWhiteColor;
 let colorChangeThreshold = 0.7; // Adjust this threshold value
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(outerWidth, outerHeight);
   yellowColor = color(250, 255, 117);
   silverWhiteColor = color(255, 255, 255);
 
   initializeParticles();
 
   stroke(255);
-  strokeWeight(1);
+  strokeWeight(3);
   clear();
+}
+
+onresize = function() {
+  let tempParticles = particles;
+  noLoop();
+  canvas.remove(); // Remove the existing canvas
+  setup();
+  particles = tempParticles;
+  loop();
 }
 
 function draw() {
