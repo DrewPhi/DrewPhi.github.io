@@ -19,14 +19,14 @@ function setup() {
   clear();
 }
 
-onresize = function() {
-  let tempParticles = particles;
-  noLoop();
-  canvas.remove(); // Remove the existing canvas
-  setup();
-  particles = tempParticles;
-  loop(); 
-}
+//onresize = function() {
+//  let tempParticles = particles;
+//  noLoop();
+//  canvas.remove(); // Remove the existing canvas
+//  setup();
+//  particles = tempParticles;
+//  loop(); 
+//}
 
 function draw() {
   background(0, 5);
