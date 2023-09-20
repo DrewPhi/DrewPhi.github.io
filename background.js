@@ -25,7 +25,7 @@ onresize = function() {
   canvas.remove(); // Remove the existing canvas
   setup();
   particles = tempParticles;
-  loop();
+  loop(); 
 }
 
 function draw() {
