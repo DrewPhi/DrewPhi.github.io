@@ -50,8 +50,8 @@ function draw() {
 
     // Update particle position
     let a = TAU * n;
-    p.x += cos(a) * 2;
-    p.y += sin(a) * 2;
+    p.x += cos(a) * 1.2;
+    p.y += sin(a) * 1.2;
 
     // Check if the particle is off-screen
     if (!onScreen(p)) {
