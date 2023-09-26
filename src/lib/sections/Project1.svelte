@@ -1,38 +1,46 @@
 <script>
     import { onDestroy, onMount } from 'svelte';
-    import Fly from '../Fly.svelte';
     import { lines } from "../../stores";
     import decode from "../../decode.js";
+
     let mylines = ["","","",""];
-    lines.subscribe((value) => {mylines = value;});
     let timeout;
-    $: HiText = mylines[0];
-    $: Name = mylines[1];
-    $: Im = mylines[2];
+    lines.subscribe((value) => {
+		mylines = value;
+	});
+    $: Scroll = mylines[0];
+    $: Section = mylines[1];
+    $: Next = mylines[2];
+    $: Last = mylines[3];
     
-    
-    
+   
+  
+
 
     onMount(() => {
+        setTimeout(() => {
+        decode(Scroll, "Scroll Down to view some of my", 0,1);
+        decode(Section, "Projects", 1,1);
+        decode(Next, "Move right to", 2,1);
+        decode(Last, "Experiences", 3,1);
 
-    setTimeout(() => {
+        }, 10);
+       
 
-        decode(HiText, "Hi! My name is", 0,0);
-        decode(Name, "Drew Steindl", 1,0);
-        decode(Im, "I'm a ", 2,0);
 
-        
     });
-});
-onDestroy(() => clearTimeout(timeout));
+    onDestroy(() => clearTimeout(timeout));
 
+    
   </script>
   
   <main >
   <div id ="title-block">
-    <p id = "hi-text">{HiText}</p>
-    <p id = "name-text">{Name}</p>
-    <p id = "sub-name-text">{Im}<Fly/></p>
+    <p id = "hi-text">{Scroll}</p>
+    <p id = "name-text">{Section}</p>
+    <p id = "sub-name-text">{Next}</p>
+    <p id = "last-word">{Last}</p>
+
   </div>
   
   </main>
@@ -42,6 +50,7 @@ onDestroy(() => clearTimeout(timeout));
       text-align:  left;
       width:60vw;
       margin:10vh;
+     
     }
     @keyframes fadein {
     from { opacity: 0; }
@@ -54,7 +63,6 @@ onDestroy(() => clearTimeout(timeout));
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
       white-space: pre-wrap;
       margin: 0;
-
     }
     #name-text{
       font-size: 5vw;
@@ -70,9 +78,18 @@ onDestroy(() => clearTimeout(timeout));
       margin: 0;
       font-weight: bold;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-      color: white;
+      color:       white;
+      display: inline-block; /* or use "inline" for pure inline behavior */
       white-space: pre-wrap;
-
+    }
+    #last-word{
+      font-size: 2vw;
+      display: inline-block; /* or use "inline" for pure inline behavior */
+      margin: 0;
+      font-weight: bold;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      color:       rgb(249, 251, 177);
+      white-space: pre-wrap;
     }
   
   </style>

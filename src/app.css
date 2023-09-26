@@ -33,9 +33,6 @@ canvas{
   height: 100%;
 }
 
-
-
-
 body {
   margin: 0;
   display: flex;
@@ -92,7 +89,5 @@ button:focus-visible {
   }
 }
 
-html{
-  overflow: hidden;
-}
+
 

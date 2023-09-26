@@ -1,8 +1,11 @@
 <script>
     import { onDestroy, onMount } from 'svelte';
-    import { lines, flying} from "../../stores";
+    import { lines } from "../../stores";
+    import decode from "../../decode.js";
+
     let mylines = ["","","",""];
     let timeout;
+    
     lines.subscribe((value) => {
 		mylines = value;
 	});
@@ -11,46 +14,15 @@
     $: Next = mylines[2];
     $: Last = mylines[3];
     
-    function fly(from, to,line) {
-        flying.set(true);
-    if (from.length !== to.length) {
-        if (from.length > to.length) {
-            to += " ".repeat(from.length - to.length);
-        }
-        else {
-            from += " ".repeat(to.length - from.length);
-        }
-    }
-    mylines[line] = from;
-    lines.set(mylines);
-    let differencesArray = [];
-    if (from === to) {
-      flying.set(false);
-      return from.trim();
-    }
-    else if (from.search("■") === -1) {
-      for (let i = 0; i < from.length ; i++){
-          if (from[i] !== to[i]){
-              differencesArray.push(i);                
-          }
-      }
-      
-      let chosenIndex = differencesArray[Math.floor(Math.random()*differencesArray.length)];
-      timeout = setTimeout(fly, 40, from.substring(0, chosenIndex) + '■' + (chosenIndex == from.length - 1 ? '' : from.substring(chosenIndex + 1)), to,line);
-    }
-    else{
-      timeout = setTimeout(fly, 40,from.replace("■", to[from.search("■")]), to,line);
-    }
-    
-  }
+
 
 
 
 function load(){
-    fly(Scroll, "Scroll Down to view my", 0);
-    fly(Section, "Experiences", 1);
-    fly(Next, "Move right to", 2);
-    fly(Last, "Contact", 3);
+    decode(Scroll, "Scroll Down to view my", 0,2);
+    decode(Section, "Experiences", 1,2);
+    decode(Next, "Move right to", 2,2);
+    decode(Last, "Contact", 3,2);
 }
 
     onMount(() => {
@@ -81,7 +53,7 @@ function load(){
       text-align:  left;
       width:60vw;
       margin:10vh;
-      
+
     }
     @keyframes fadein {
     from { opacity: 0; }
@@ -94,6 +66,7 @@ function load(){
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
       white-space: pre-wrap;
       margin: 0;
+
     }
     #name-text{
       font-size: 5vw;

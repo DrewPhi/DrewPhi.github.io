@@ -8,7 +8,7 @@ let yellowColor;
 let silverWhiteColor;
 let colorChangeThreshold = 0.7; // Adjust this threshold value
 function setup() {
-  createCanvas(outerWidth, outerHeight);
+  createCanvas(windowWidth, windowHeight);
   yellowColor = color(250, 255, 117);
   silverWhiteColor = color(255, 255, 255);
 
@@ -50,8 +50,8 @@ function draw() {
 
     // Update particle position
     let a = TAU * n;
-    p.x += cos(a) * 2;
-    p.y += sin(a) * 2;
+    p.x += cos(a) * 1.2;
+    p.y += sin(a) * 1.2;
 
     // Check if the particle is off-screen
     if (!onScreen(p)) {
