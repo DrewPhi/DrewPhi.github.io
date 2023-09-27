@@ -9,8 +9,8 @@ let silverWhiteColor;
 let colorChangeThreshold = 0.7; // Adjust this threshold value
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  yellowColor = color(250, 255, 117);
-  silverWhiteColor = color(255, 255, 255);
+  yellowColor = color(250, 255, 117,70);
+  silverWhiteColor = color(255, 255, 255,70);
 
   initializeParticles();
 
