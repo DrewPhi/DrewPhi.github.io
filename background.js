@@ -68,7 +68,9 @@ function draw() {
 
   }
 }
-
+function keyReleased() {
+  noiseSeed(millis());
+}
 function mouseReleased() {
   noiseSeed(millis());
 }
