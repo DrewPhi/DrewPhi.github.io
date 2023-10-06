@@ -2,20 +2,19 @@ let particles = [];
 const num = 1000;
 
 const noiseScale = 0.01 / 2;
-
 // Define initial colors
 let yellowColor;
 let silverWhiteColor;
 let colorChangeThreshold = 0.7; // Adjust this threshold value
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  yellowColor = color(250, 255, 117,70);
-  silverWhiteColor = color(255, 255, 255,70);
+  yellowColor = color(255,255,161);
+  silverWhiteColor = color(34, 3, 31,70);
 
   initializeParticles();
 
   stroke(255);
-  strokeWeight(3);
+  strokeWeight(1.5);
   clear();
 }
 
@@ -28,8 +27,8 @@ windowResized = function() {
   loop(); 
 }
 
-function draw() {
-  background(0, 5);
+function draw() { 
+  background(34,38,36,  random() > .99 ? 2 : 1);
   for (let i = particles.length - 1; i >= 0; i--) {
     let particle = particles[i];
     let p = particle.position;
@@ -60,7 +59,7 @@ function draw() {
     }
 
     // Update color change rate individually
-    particle.colorChangeRate += random(-0.0002, 0.0002); // Add some randomness
+    particle.colorChangeRate += random(-0.02, 0.02); // Add some randomness
 
     // Decrease particle lifespan
 
