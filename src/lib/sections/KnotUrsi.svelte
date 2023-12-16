@@ -16,12 +16,15 @@
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
         As a fellow at Vassar's URSI, I explored the genus distribution of two bridge knots on a team of five students. We had a successful summer with substantial results, and we presented our work at various conferences, including SUNY New Paltz and Mt. Holyoke. For more information, please see our paper, which we've submitted for publication.
       </p>
+      <a href="/PaperKnot.pdf">
+      <p id  = "last-word" >View Our Paper</p>
+      <a/>
     </div>
   
     <iframe
       title="pdf"
       id="pdf"
-      src="https://docs.google.com/gview?url=https://arxiv.org/pdf/2307.09399.pdf&embedded=true"
+      src="/PaperKnot.pdf"
       style="width: 30%; height: 75%;"
       frameborder="0"
     ></iframe>
@@ -32,8 +35,6 @@
       position: fixed;
       top: 15%;
       right: 10%;
-      width: 30%;
-      height: 75%;
       opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
       animation: fadein .5s ease-in forwards; /* Apply the fade-in animation */
       animation-delay: .2s;
@@ -83,6 +84,71 @@
       border: 1px solid rgb(249, 251, 177);
       border-radius: 5px;
       padding: 1vw;
+    }
+    #last-word{
+
+display:none;
+}
+    @media only screen and (max-width: 768px) {
+
+#title-block {
+  text-align: left;
+  width: 70vw;
+  margin: 0vh 3vh 0; /* Adjust top margin to move it upwards */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#hi-text {
+  font-size: 7vw;
+  color: white;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+#name-text {
+  font-size: 4vw;
+  color: rgb(249, 251, 177);
+  margin: 0;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  white-space: pre-wrap;
+  padding-bottom: 5%;
+}
+
+#sub-name-text {
+  font-size: 3.5vw;
+  margin: 0;
+  font-weight: bold;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: white;
+  white-space: pre-wrap;
+  border: 1px solid rgb(249, 251, 177);
+  border-radius: 5px;
+  padding: 3vw;
+}
+#pdf {
+  display:none;}
+  #last-word{
+
+font-size: 3vw;
+display: inline-block;
+margin-top: 2vh;
+font-weight: bold;
+text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+color:       rgb(249, 251, 177);
+white-space: pre-wrap;
+border-bottom: rgb(249, 251, 177) solid 4px;
+}
     }
   </style>
   

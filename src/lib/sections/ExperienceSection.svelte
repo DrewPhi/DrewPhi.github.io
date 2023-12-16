@@ -19,7 +19,7 @@
 
 
 function load(){
-    decode(Scroll, "Scroll Down to view my", 0,2);
+    decode(Scroll, "Go Down to view my", 0,2);
     decode(Section, "Experiences", 1,2);
     decode(Next, "Move right to", 2,2);
     decode(Last, "Contact", 3,2);
@@ -52,7 +52,7 @@ function load(){
     #title-block{
       text-align:  left;
       width:60vw;
-      margin:10vh;
+      margin: 5vh 10vh 0; /* Adjust top margin to move it upwards */
 
     }
     @keyframes fadein {
@@ -96,6 +96,52 @@ function load(){
       color:       rgb(249, 251, 177);
       white-space: pre-wrap;
     }
-  
+    @media only screen and (max-width: 768px) {
+      #title-block{
+        text-align:  left;
+        width:80vw;
+        margin: 0vh 3vh 0; /* Adjust top margin to move it upwards */
+      }
+      @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+      #hi-text{
+        font-size: 4vw;
+        color: rgb(249, 251, 177);
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        white-space: pre-wrap;
+        margin: 0;
+
+      }
+      #name-text{
+        font-size: 10vw;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        color: white;
+        white-space: pre-wrap;
+
+      }
+      #sub-name-text{
+        font-size: 5vw;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        color: white;
+        white-space: pre-wrap;
+
+      }
+      #last-word{
+      font-size: 5vw;
+      display: inline-block; /* or use "inline" for pure inline behavior */
+      margin: 0;
+      font-weight: bold;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      color:       rgb(249, 251, 177);
+      white-space: pre-wrap;
+    }
+    }
   </style>
   

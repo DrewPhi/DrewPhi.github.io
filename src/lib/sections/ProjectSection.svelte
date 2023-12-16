@@ -19,7 +19,7 @@
 
     onMount(() => {
         setTimeout(() => {
-        decode(Scroll, "Scroll Down to view some of my", 0,1);
+        decode(Scroll, "Move Down to view some of my", 0,1);
         decode(Section, "Projects", 1,1);
         decode(Next, "Move right to", 2,1);
         decode(Last, "Experiences", 3,1);
@@ -47,9 +47,9 @@
   
   <style>
     #title-block{
-      text-align:  left;
+      text-align:  left;  
       width:60vw;
-      margin:10vh;
+      margin: 5vh 10vh 0; /* Adjust top margin to move it upwards */
       
     }
     @keyframes fadein {
@@ -91,6 +91,52 @@
       color:       rgb(249, 251, 177);
       white-space: pre-wrap;
     }
-  
+    @media only screen and (max-width: 768px) {
+      #title-block{
+        text-align:  left;
+        width:80vw;
+        margin: 0vh 3vh 0; /* Adjust top margin to move it upwards */
+      }
+      @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+      #hi-text{
+        font-size: 4vw;
+        color: rgb(249, 251, 177);
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        white-space: pre-wrap;
+        margin: 0;
+
+      }
+      #name-text{
+        font-size: 10vw;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        color: white;
+        white-space: pre-wrap;
+
+      }
+      #sub-name-text{
+        font-size: 5vw;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        color: white;
+        white-space: pre-wrap;
+
+      }
+      #last-word{
+      font-size: 5vw;
+      display: inline-block; /* or use "inline" for pure inline behavior */
+      margin: 0;
+      font-weight: bold;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      color:       rgb(249, 251, 177);
+      white-space: pre-wrap;
+    }
+    }
   </style>
   

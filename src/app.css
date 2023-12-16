@@ -1,10 +1,11 @@
+
 :root {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'IosevkaHeavyExtended'; 
   line-height: 1.5;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: rgb(34,38,36);
   --color-secondary: rgb(250, 255, 117);
   --color-primary: rgb(255, 255, 255);
   --color-tertiary: rgb(47,47,47);
@@ -76,18 +77,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
 
 
 

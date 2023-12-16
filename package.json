@@ -15,6 +15,10 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "gh-pages": "^6.0.0"
+    "@wolfram-alpha/wolfram-alpha-api": "^23.1004.144821-RELEASE",
+    "gh-pages": "^6.0.0",
+    "mathjs": "^12.1.0",
+    "nerdamer": "^1.1.13",
+    "numeric": "^1.2.6"
   }
 }

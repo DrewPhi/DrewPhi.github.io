@@ -41,7 +41,7 @@ onDestroy(() => clearTimeout(timeout));
     #title-block{
       text-align:  left;
       width:60vw;
-      margin:10vh;
+      margin: 5vh 10vh 0; /* Adjust top margin to move it upwards */
     }
     @keyframes fadein {
     from { opacity: 0; }
@@ -74,6 +74,43 @@ onDestroy(() => clearTimeout(timeout));
       white-space: pre-wrap;
 
     }
-  
+    @media only screen and (max-width: 768px) {
+      #title-block{
+        text-align:  left;
+        width:80vw;
+        margin: 0vh 3vh 0; /* Adjust top margin to move it upwards */
+      }
+      @keyframes fadein {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+      #hi-text{
+        font-size: 4vw;
+        color: rgb(249, 251, 177);
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        white-space: pre-wrap;
+        margin: 0;
+
+      }
+      #name-text{
+        font-size: 10vw;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        color: white;
+        white-space: pre-wrap;
+
+      }
+      #sub-name-text{
+        font-size: 5vw;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        color: white;
+        white-space: pre-wrap;
+
+      }
+    }
   </style>
   

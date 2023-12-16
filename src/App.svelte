@@ -4,20 +4,30 @@
   import ExperienceSection from './lib/sections/ExperienceSection.svelte';
   import ContactSection from './lib/sections/ContactSection.svelte';
   import {page } from './stores.js';
-    import KnotUrsi from './lib/sections/KnotUrsi.svelte';
-    import Harper from './lib/sections/Harper.svelte';
-    import { fly } from 'svelte/transition';
-    import Project1 from './lib/sections/Project1.svelte';
+  import KnotUrsi from './lib/sections/KnotUrsi.svelte';
+  import Harper from './lib/sections/Harper.svelte';
+  import { fly } from 'svelte/transition';
+  import Ornithopter from './lib/sections/Ornithopter.svelte';
+  import WebsiteSection from './lib/sections/WebsiteSection.svelte';
+  import About from './lib/sections/About.svelte';
+  import Valse from './lib/sections/Valse.svelte';
+  import Satire from './lib/sections/Satire.svelte';
+  import Pizza from './lib/sections/Pizza.svelte';
+  import Slinky from './lib/sections/Slinky.svelte';
+  import TurtleBot from './lib/sections/TurtleBot.svelte';
+  import Printing from './lib/sections/Printing.svelte';
+  import FRC from './lib/sections/FRC.svelte';
+    
   let pages = {
-    0: [HomeSection],
-    1: [ProjectSection, Project1, "P3"],
-    2: [ExperienceSection, KnotUrsi, Harper],
+    0: [HomeSection, About],
+    1: [ProjectSection, Ornithopter,Slinky,TurtleBot, WebsiteSection, Valse, Satire,Pizza],
+    2: [ExperienceSection, KnotUrsi, Harper,FRC,Printing],
     3: [ContactSection]
 };
 let verticals = {
-    0: ["Home"],
-    1: ["Projects", "P1", "P3"],
-    2: ["Experiences","Knot Theory" , "Harper"],
+    0: ["Home","About"],
+    1: ["Projects", "Ornithopter","Slarm","TurtleBot","Website", "Valse d'eclairage","Satire","Vassar Pizza Daily!"],
+    2: ["Experiences","Knot Theory" , "Harper","First Robotics","Covid"],
     3: ["Contact"]
 };
   let pageIdx = 0;
@@ -77,10 +87,10 @@ let verticals = {
 window.addEventListener('wheel', (event) => {
 
 
-        if (event.deltaY > 75) {
+        if (event.deltaY < -100) {
             // Scroll down
             miniPage = (miniPage + 1) % verticals[pageIdx].length;
-        } else if (event.deltaY < -75) {
+        } else if (event.deltaY > 100) {
             // Scroll up
             if (miniPage == 0) {
               miniPage = verticals[pageIdx].length - 1;
@@ -99,7 +109,9 @@ window.addEventListener('wheel', (event) => {
   function goToHome() {
     // Handle navigation to Home
       pageIdx = 0;
+      miniPage = 0;
       page.set(pageIdx);
+      miniPage = 0;
 
   }
 
@@ -107,19 +119,24 @@ window.addEventListener('wheel', (event) => {
     // Handle navigation to Projects
     
       pageIdx = 1;
+      miniPage = 0;
       page.set(pageIdx);
+      miniPage = 0;
 
    }
 
   function goToExperience() {
     // Handle navigation to Experience
       pageIdx = 2;
+      miniPage = 0;
       page.set(pageIdx);
 
     }
   function goToContact() {
     // Handle navigation to Experience
       pageIdx = 3;
+      miniPage = 0;
+
       page.set(pageIdx);
 
     } 
@@ -189,6 +206,9 @@ window.addEventListener('wheel', (event) => {
     color: white;
     font-size: 1vw;
     cursor: pointer;
+    font-weight: bolder;
+    text-shadow: 8px 8px 8px black;
+
   }
 
   .vnavbar {
@@ -204,7 +224,7 @@ window.addEventListener('wheel', (event) => {
   padding: 1vw;
   border-left: solid 3px;
   border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 8px 8px 8px black;
   font-weight: bold;
   height: calc(7% * var(--vnavbar-button-count));}
 
@@ -218,9 +238,80 @@ window.addEventListener('wheel', (event) => {
   color: white;
   font-size: 1vw;
   cursor: pointer;
-  font-weight: bold;
-  text-shadow: 4px 4px 4px black;
+  font-weight: bolder;
+  text-shadow: 8px 8px 8px black;
   width: 100%; /* Make the buttons full width within the container */
 }
 
+@media only screen and (max-width: 768px) {
+         .containerMain{
+    position:fixed;
+    left: 16%;
+    top:30%;
+    height: 100%;
+  }
+  
+  .navbar {
+    position: fixed;
+    top:2%;
+    left: 0%;
+    width: 100%;
+    color: white; /* Change the text color as needed */
+    display: flex;
+    justify-content: space-around;
+    padding: 1vw;
+    border-top: solid 3px ;
+    border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
+    text-shadow: 1px 1px 1px black; /* Add a 1px black outline */
+    font-weight: bold;
+
+}
+
+
+.navbar button:not(.active) {
+    opacity: 0.5; /* You can adjust the opacity value as needed */
+  }
+  .navbar button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 3vw;
+    cursor: pointer;
+    font-weight: bolder;
+    text-shadow: 8px 8px 8px black;
+
+  }
+
+  .vnavbar {
+  position: fixed;
+  top: center;
+  left: 2%;
+  width: 1%;
+  color: white;
+  display: flex;
+  flex-direction: column; /* Display buttons in a vertical column */
+  justify-content: space-between; /* Add space between buttons */
+  align-items: center; /* Center-align buttons horizontally */
+  padding: 1vw;
+  border-left: solid 3px;
+  border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
+  text-shadow: 8px 8px 8px black;
+  font-weight: bold;
+  height: calc(5% * var(--vnavbar-button-count));}
+
+.vnavbar button:not(.active) {
+  opacity: 0.5;
+}
+
+.vnavbar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2vw;
+  cursor: pointer;
+  font-weight: bolder;
+  text-shadow: 8px 8px 8px black;
+  width: 100%; /* Make the buttons full width within the container */
+}
+}
 </style>
