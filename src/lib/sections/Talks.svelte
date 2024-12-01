@@ -11,38 +11,32 @@
   
   <main>
     <div id="title-block">
-      <p id="hi-text">Mathematics Research</p>
-      <p id="name-text">Vassar REU Summer 2022</p>
-      <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        As a research fellow in Vassar's Undergraduate Research Institute (URSI), I explored the genus distribution of two bridge knots on a team of five students. We had a successful summer with substantial results, and we presented our work at various conferences hosted by SUNY New Paltz and Mt. Holyoke. For more information, please see our paper, which will appear in Fundamenta Mathematicae.
-      </p>
-      <a href="/PaperKnot.pdf">
-      <p id  = "last-word" >View Our Paper</p>
-      <a/>
+      <p id="hi-text">Talks I have given</p>
+      <p id="name-text">Exploring the Landscape of Neural Networks Using Diffusion Geometry.</p>
+      <p id="sub-name-text">July 2024 / Jane Street Mathematics Conference (Poster).</p>
+
+      <p id="name-text">Alpha Zero Vs To Knot or Not to Knot.</p>
+      <p id="sub-name-text">July 2024 / UnKnot V Conference.</p>
+      <p id="sub-name-text">April 2024 / Hudson River Mathematics Conference.</p>
+
+      <p id="name-text">Integrated Vision, Language, and Motor Control in a Humanoid Robot.</p>
+      <p id="sub-name-text">September 2023 / Vassar URSI Symposium (Poster).</p>
+
+      <p id="name-text">The Distribution of Genera of 2-Bridge Knots.</p>
+      <p id="sub-name-text">April 2023 / Hudson River Mathematics Conference.</p>
+      <p id="sub-name-text">September 2022 / SUNY New Paltz Symposium for Undergrad Math Research.</p>
+      <p id="sub-name-text">September 2022 / Vassar URSI Symposium (Poster).</p>
+
+
     </div>
-  
-    <iframe
-      title="pdf"
-      id="pdf"
-      src="/PaperKnot.pdf"
-      style="width: 30%; height: 75%;"
-      frameborder="0"
-    ></iframe>
   </main>
   
   <style>
-    #pdf {
-      position: fixed;
-      top: 15%;
-      right: 10%;
-      opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
-      animation: fadein .5s ease-in forwards; /* Apply the fade-in animation */
-      animation-delay: .2s;
-    }
+
   
     #title-block {
       text-align: left;
-      width: 35vw;
+      width: 40vw;
       margin: 0vh 10vh 0; /* Adjust top margin to move it upwards */
     }
   
@@ -56,7 +50,7 @@
     }
   
     #hi-text {
-      font-size: 3vw;
+      font-size: 2vw;
       color: white;
       font-weight: bold;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -65,25 +59,25 @@
     }
   
     #name-text {
-      font-size: 2vw;
+      font-size: 1.3vw;
       color: rgb(249, 251, 177);
       margin: 0;
       font-weight: bold;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
       white-space: pre-wrap;
-      padding-bottom: 5%;
+      padding-bottom: 0%;
     }
   
     #sub-name-text {
-      font-size: 1vw;
+      font-size: .9vw;
       margin: 0;
       font-weight: bold;
       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
       color: white;
       white-space: pre-wrap;
-      border: 1px solid rgb(249, 251, 177);
+      border: 0px solid rgb(249, 251, 177);
       border-radius: 5px;
-      padding: 1vw;
+      padding-left: 2vw;
     }
     #last-word{
 
@@ -122,7 +116,7 @@ display:none;
   font-weight: bold;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   white-space: pre-wrap;
-  padding-bottom: 5%;
+  padding-bottom: 0%;
 }
 
 #sub-name-text {
@@ -134,10 +128,9 @@ display:none;
   white-space: pre-wrap;
   border: 1px solid rgb(249, 251, 177);
   border-radius: 5px;
-  padding: 3vw;
+  padding: 0vw;
 }
-#pdf {
-  display:none;}
+
   #last-word{
 
 font-size: 3vw;

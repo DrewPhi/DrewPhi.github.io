@@ -12,9 +12,9 @@
   <main>
     <div id="title-block">
       <p id="hi-text">Humanoid Robotics</p>
-      <p id="name-text">Vassar Summer 2023</p>
+      <p id="name-text">Vassar REU Summer 2023</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        Again as an URSI fellow at Vassar, I worked on a team of two on a humanoid robot named Harper. Our job was to develop the hardware and software infrastructure for human-like perception and action. We designed and are implementing a custom control architecture, coordinating vision, language, and motor control systems. We've been working with Nvidia's Jetson AGX Orin, DepthAI, Ros2, MicroRos, Nvidia Riva SDK, Arduino, and more. This experience has become an ongoing project.</p>
+        As an URSI fellow at Vassar, I worked on a team of two developing a humanoid robot named Harper. Our job was to develop the hardware and software infrastructure for human-like perception and action. We designed and implemented a custom control architecture, coordinating vision, language, and motor control systems. We've been working with Nvidia's Jetson AGX Orin, DepthAI, Ros2, MicroRos, Nvidia Riva SDK, Arduino, and more. This experience has become an ongoing project.</p>
         <a href="/URSI_26_KenLivingston_MichaelFerrante_AndrewJSteindl_flat.pdf">
        <p id  = "last-word" >View Our Poster</p>
     </a>

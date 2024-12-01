@@ -12,22 +12,11 @@
   <main>
     <div id="title-block">
       <p id="hi-text">Mathematics Research</p>
-      <p id="name-text">Vassar REU Summer 2022</p>
+      <p id="name-text">AlphaZero Vs To Knot or Not to Knot.</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        As a research fellow in Vassar's Undergraduate Research Institute (URSI), I explored the genus distribution of two bridge knots on a team of five students. We had a successful summer with substantial results, and we presented our work at various conferences hosted by SUNY New Paltz and Mt. Holyoke. For more information, please see our paper, which will appear in Fundamenta Mathematicae.
+        With my advisor I have developed an AI adapted from Google's AlphaZero to play a combinatorial game on Knots called ``To Knot or Not to Knot". We are using it to find perfect play on any given knot shadow. After sufficently many knot strategies are collected we examine the latent space of the strategies from training an autoencoder on the move sequences to find families of knots with similar strategies. We also hope this will contribute substantially to solving the game. This paper is still in progress, however I have already given a few talks on some preliminary results.
       </p>
-      <a href="/PaperKnot.pdf">
-      <p id  = "last-word" >View Our Paper</p>
-      <a/>
     </div>
-  
-    <iframe
-      title="pdf"
-      id="pdf"
-      src="/PaperKnot.pdf"
-      style="width: 30%; height: 75%;"
-      frameborder="0"
-    ></iframe>
   </main>
   
   <style>
@@ -42,7 +31,7 @@
   
     #title-block {
       text-align: left;
-      width: 35vw;
+      width: 45vw;
       margin: 0vh 10vh 0; /* Adjust top margin to move it upwards */
     }
   

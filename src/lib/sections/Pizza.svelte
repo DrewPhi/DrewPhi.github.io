@@ -14,7 +14,7 @@
       <p id="hi-text">Pizza Reviews</p>
       <p id="name-text">Vassar</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-       My roomate and I freshman year wanted videos to document our time in college. We found pizza reviews to be a perfect medium. We've regularly been reviewing the Vassar College Pizza at the Deece ever since. I've embed one of our videos from a notable day.</p>
+       My roomate and I freshman year wanted videos to document our time in college. We found pizza reviews to be a perfect medium. We've regularly been reviewing the Vassar College Pizza at the Deece ever since. I've embeded one of our videos from a notable day.</p>
     </div>
   
     <iframe title = "video" class="mounted-image" src="https://www.youtube.com/embed/B5Zf6qH5Ltc" frameborder="0" allowfullscreen></iframe>

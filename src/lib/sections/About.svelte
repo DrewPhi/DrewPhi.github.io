@@ -12,16 +12,26 @@
   <main>
     <div id="title-block">
       <p id="hi-text">About Me!</p>
-      <p id="name-text">Updated September 2023</p>
+      <p id="name-text">Updated October 2024</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">Hi! I'm Drew, a student at Vassar College studying Pure and Applied Mathematics. I also have an unwavering enthusiasm for the world of Robotics. I've been learning, tinkering, and breaking things my whole life. Feel free to explore my portfolio to see what I've been up to :)</p>
       <a href="/RESUMEFINAL.pdf">
         <p id  = "last-word" >My Resume</p>
      </a>
     </div>
+
   
   
   </main>
   <style>
+
+#pdf {
+      position: fixed;
+      top: 15%;
+      right: 10%;
+      opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
+      animation: fadein .5s ease-in forwards; /* Apply the fade-in animation */
+      animation-delay: .2s;
+    }
         #last-word{
   
       font-size: 2vw;

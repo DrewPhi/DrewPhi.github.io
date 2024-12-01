@@ -12,10 +12,9 @@
   <main>
     <div id="title-block">
       <p id="hi-text">Mathematics Research</p>
-      <p id="name-text">Vassar REU Summer 2022</p>
+      <p id="name-text">Yale SUMRY REU summer 2024</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        As a research fellow in Vassar's Undergraduate Research Institute (URSI), I explored the genus distribution of two bridge knots on a team of five students. We had a successful summer with substantial results, and we presented our work at various conferences hosted by SUNY New Paltz and Mt. Holyoke. For more information, please see our paper, which will appear in Fundamenta Mathematicae.
-      </p>
+        During my summer at Yale's SUMRY program, I worked with a group of 9 students on Geometric Manifold Learning. We used PHATE to create a manifold from network representations and characterized it by various structural and statistical properties. We found that high-performing networks shared similar embedding features and explored hyperparameter and architecture optimization through manifold sampling. Our work has been submitted to AISTATS 2025, and we are continuing research on generating networks from this manifold towards another paper.      </p>
       <a href="/PaperKnot.pdf">
       <p id  = "last-word" >View Our Paper</p>
       <a/>
@@ -24,7 +23,7 @@
     <iframe
       title="pdf"
       id="pdf"
-      src="/PaperKnot.pdf"
+      src="/manifold.pdf"
       style="width: 30%; height: 75%;"
       frameborder="0"
     ></iframe>

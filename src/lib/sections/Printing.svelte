@@ -15,8 +15,8 @@
       <p id="hi-text">Covid 3D Printing</p>
       <p id="name-text">2020</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        With grants from Southington Community Cultural Arts and the Southington Arts and Crafts Association, my two friends and I transformed an abandoned bar into a 3D printing facility. Together, we manufactured thousands of vital personal protective equipment items, donating them to nearby hospitals. Our hometown provided the space for this inspiring effort.</p>
-        <a href="https://www.myrecordjournal.com/News/Southington/Southington-News/SOCCA-grant-funds-local-faceshield-printing-efforts.html#gallery-9">
+        With a grants from Southington Community Cultural Arts and the Southington Arts and Crafts Association, my two friends and I transformed an abandoned bar into a 3D printing facility. Together, we manufactured vital personal protective equipment. Everything was donated to medical facilities throughout Connecticut.</p>
+        <a href="https://www.gaylord.org/Patients-Families/About/News/News-List/southington-residents-make-face-shields-other-supplies-from-socca-grant">
           <p id  = "last-word" >View The Article</p>
        </a>
       </div>

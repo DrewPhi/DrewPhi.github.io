@@ -10,22 +10,17 @@
 </script>
 
 <main>
+
   <div id="title-block">
-    <p id="hi-text">Modular Ornithopter</p>
-    <p id="name-text">Vassar Ongoing</p>
-    <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">I've designed and constructed an open source biomimetic modular ornithopter with a professor here at Vassar. The ornithopter will let us test a perforated wing design based on real bird feathers. The wing passively opens up on the upstroke of a flap to allow air to pass through and closes on the downstroke just as real birds do. We compare this wing design with a classical solid wing design to study its advantages and gain insights into the role feathers play in bird evolution. The ornithopter is powered by a 2S brushless motor and, aside from bearings, is fully 3D printed. </p>
-    <a href="/Ornithopter_Public_Tutorial.pdf">
-      <p id  = "last-word" >How to Build it</p>
-      <a/>
-   <img class="mounted-image" src="/BirdPhoto.png" alt="3D printed Bird">
+    <p id="hi-text">Flowplane 2023</p>
+    <a href="https://flowplane.vercel.app/" id="name-text">https://flowplane.vercel.app/</a>
+    <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">My friend and I wanted to see animations of the dynamical systems we were learning about in class. We were unable to find a tool for this so we made our own. It takes any dynamical system and numerically finds and classifies fixed points. To do this properly we developed our own algorithm. There are a ton of settings giving the user complete control. If this web app fails to find a fixed point or classify it correctly you can increase its precision through settings. It also saves setting values in a link that you could send to people.</p>
+    </div>
 
-  </div>
-
-
+    <iframe class = "mounted-image" src="https://flowplane.vercel.app/" title="Website"></iframe> 
 </main>
 <style>
-      #last-word{
-
+    #last-word{
     font-size: 2vw;
     display: inline-block;
     margin-top: 2vh;
@@ -35,23 +30,23 @@
     white-space: pre-wrap;
     border-bottom: rgb(249, 251, 177) solid 4px;
   }
-.mounted-image {
-  position: fixed;
-  top: 35%;
-  right: 10%;
-  width: 30%;
-  height: 36%;
-  opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
-  border: .3vw solid rgb(249, 251, 177);
-  border-radius: 5px;
-  animation: fadein .5s ease-in forwards; /* Apply the fade-in animation */
-  animation-delay: .2s;  }
+  .mounted-image {
+    position: fixed;
+    top: 35%;
+    right: 10%;
+    width: 30%;
+    height: 36%;
+    opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
+    border: .3vw solid rgb(249, 251, 177);
+    border-radius: 5px;
+    animation: fadein .5s ease-in forwards; /* Apply the fade-in animation */
+    animation-delay: .4s;  }
 
 
   #title-block {
     text-align: left;
     width: 35vw;
-    margin: 0vh 10vh 0; /* Adjust top margin to move it upwards */
+    margin: 0vh 10vh 0; 
   }
 
   @keyframes fadein {
@@ -83,7 +78,7 @@
   }
 
   #sub-name-text {
-    font-size: .9vw;
+    font-size: 1vw;
     margin: 0;
     font-weight: bold;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -93,9 +88,9 @@
     border-radius: 5px;
     padding: 1vw;
   }
+
   @media only screen and (max-width: 768px) {
-    .mounted-image {
-  display:none; }
+
 #title-block {
   text-align: left;
   width: 70vw;
@@ -131,7 +126,7 @@
 }
 
 #sub-name-text {
-  font-size: 2.5vw;
+  font-size: 3.5vw;
   margin: 0;
   font-weight: bold;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
@@ -141,5 +136,16 @@
   border-radius: 5px;
   padding: 3vw;
 }
+.mounted-image {
+  position: relative;
+  margin-top: 5%;
+  right: 10%;
+  width: 70%;
+  height: 20%;
+  opacity: 0; /* Initially, set opacity to 0 for the fade-in effect */
+  border: .3vw solid rgb(249, 251, 177);
+  border-radius: 5px;
+  animation: fadein .5s ease-in forwards; /* Apply the fade-in animation */
+  animation-delay: .2s;  }
     }
 </style>

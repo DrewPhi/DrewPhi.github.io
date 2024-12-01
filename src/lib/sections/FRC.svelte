@@ -15,7 +15,7 @@
       <p id="hi-text">First Robotics</p>
       <p id="name-text">UHSSE 2017-2021</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        During my time with Team 1991 Dragons in First Robotics, I transitioned from programming lead to electrical lead and eventually team captain, gaining valuable experience in team management and integration. We utilized OpenCV, LabVIEW, Java, Python, and electronics, along with CAD and 3D printing. I am most proud of us receiving the Autonomous Systems Award for our robot's precise machine vision and machine learning-assisted performance. Over four years, we built three 125-pound robots, tackled various challenges, and fostered collaboration between experienced engineers and newcomers.</p>
+        During my time with Team 1991 Dragons in First Robotics, I worked my way up from programming lead to electrical lead and eventually team captain. I gained valuable experience in team management and system integration. We used OpenCV, LabVIEW, Java, Python, and various electronics. I developed strong CAD and 3D printing skills. I am most proud of us receiving the Autonomous Systems Award my final year for our robot's precise machine vision and machine learning-assisted performance. Over four years, we built three 125-pound robots, tackled various challenges, and fostered collaboration between experienced engineers and newcomers. This team will always be close to my heart.</p>
     </div>
   
     <img class="mounted-image" src="/robot1991.jpg" alt="RobotPhoto">

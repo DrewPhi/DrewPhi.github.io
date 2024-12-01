@@ -13,8 +13,8 @@
 
   <div id="title-block">
     <p id="hi-text">This Website</p>
-    <p id="name-text">Updated October 2023</p>
-    <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">I designed and created this website to have a place to log my projects and experiences. This was built with Svelte and Vite. The background of this website was made with p5.js and is a Perlin Noise FlowField. You can click to scramble the Noise!</p>
+    <p id="name-text">Updated October 2024</p>
+    <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">I designed and created this website to have a place to log my projects and experiences. This was built with Svelte and Vite. The background of this website was made with p5.js and is a Perlin noise flowField. You can click to scramble the Noise!</p>
     </div>
 
     <iframe class = "mounted-image" src="https://drewphi.github.io/" title="Website"></iframe> 

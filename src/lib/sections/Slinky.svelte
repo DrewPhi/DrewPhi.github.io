@@ -13,7 +13,7 @@
     <div id="title-block">
       <p id="hi-text">Slarm</p>
       <p id="name-text">Vassar Ongoing</p>
-      <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">I am collaborating with a professor at Vassar on the development of a robot arm made from a slinky, which we affectionately refer to as the "Slarm." This unique robotic arm is designed to possess infinite degrees of freedom, and it is expected to exhibit intriguing properties that distinguish it from other snake-arm robots, primarily because it comprises a single continuous surface.</p>
+      <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">I am collaborating with a professor at Vassar on the development of a robot arm made from a slinky, which we affectionately refer to as the "Slarm". This arm stands out due to its single continuous surface, allowing it to bend and deform fluidly without the constraints of segmented joints. By using wires to manipulate its shape, we unlock the potential for infinite adjustability, enabling fine-tuned, continuous motions along its entire length</p>
     </div>
   
   

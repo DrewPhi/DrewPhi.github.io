@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap');
+
 
 :root {
-  font-family: 'IosevkaHeavyExtended'; 
+  font-family: 'Source Code Pro', monospace; /* Updated font-family */
   line-height: 1.5;
 
   color-scheme: light dark;

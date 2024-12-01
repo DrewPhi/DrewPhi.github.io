@@ -17,17 +17,21 @@
   import TurtleBot from './lib/sections/TurtleBot.svelte';
   import Printing from './lib/sections/Printing.svelte';
   import FRC from './lib/sections/FRC.svelte';
+  import Flowplane from './lib/sections/Flowplane.svelte';
+  import Sumry from './lib/sections/Sumry.svelte';
+  import Talks from './lib/sections/Talks.svelte';
+  import knotAI from './lib/sections/KnotAI.svelte';
     
   let pages = {
     0: [HomeSection, About],
-    1: [ProjectSection, Ornithopter,Slinky,TurtleBot, WebsiteSection, Valse, Satire,Pizza],
-    2: [ExperienceSection, KnotUrsi, Harper,FRC,Printing],
+    1: [ProjectSection, knotAI,Flowplane,Ornithopter,Slinky,TurtleBot, WebsiteSection, Valse, Satire,Pizza],
+    2: [ExperienceSection, Sumry,KnotUrsi, Harper,Talks,FRC,Printing],
     3: [ContactSection]
 };
 let verticals = {
     0: ["Home","About"],
-    1: ["Projects", "Ornithopter","Slarm","TurtleBot","Website", "Valse d'eclairage","Satire","Vassar Pizza Daily!"],
-    2: ["Experiences","Knot Theory" , "Harper","First Robotics","Covid"],
+    1: ["Projects", "AlphaKnot","Flowplane","Ornithopter","Slarm","TurtleBot","Website", "Valse d'eclairage","Satire","Vassar Pizza Daily!"],
+    2: ["Experiences","Yale Geometric Manifold Learning","URSI Knot Theory" , "URSI Harper ","Talks","First Robotics","Covid"],
     3: ["Contact"]
 };
   let pageIdx = 0;
@@ -213,7 +217,7 @@ window.addEventListener('wheel', (event) => {
 
   .vnavbar {
   position: fixed;
-  top: 30%;
+  top: 20%;
   left: 2%;
   width: 5%;
   color: white;
