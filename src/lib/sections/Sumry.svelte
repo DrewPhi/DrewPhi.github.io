@@ -14,7 +14,7 @@
       <p id="hi-text">Mathematics Research</p>
       <p id="name-text">Yale SUMRY REU summer 2024</p>
       <p id="sub-name-text" style="backdrop-filter: blur({$blur}px);">
-        During my summer at Yale's SUMRY program, I worked with a group of 9 students on Geometric Manifold Learning. We used diffusion geometry to create a manifold from network representations and characterized it by various structural and statistical properties. We found that high-performing networks shared similar embedding features and explored hyperparameter and architecture optimization through manifold sampling. Our work has been submitted to AISTATS 2025, and we are continuing research on generating networks from this manifold towards another paper.      </p>
+        During my summer at Yale's SUMRY program, I worked with a group of 9 students on Geometric Manifold Learning. We used diffusion geometry to create a manifold from network representations and characterized it by various structural and statistical properties. We found that high-performing networks shared similar embedding features and explored hyperparameter and architecture optimization through manifold sampling. Our work has been submitted to AISTATS 2025, and we are continuing research on generating networks from this manifold towards another paper. (The paper attached is outdated, I will update it when the its accepted or the preprint is done.) </p>
       <a href="/PaperKnot.pdf">
       <p id  = "last-word" >View Our Paper</p>
       <a/>
