@@ -28,12 +28,9 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
-    body {
+    html {
       margin: 0;
       min-width: 320px;
       min-height: 100%;
@@ -41,16 +38,26 @@
     }
 
     body {
+      margin: 0;
+      min-width: 320px;
       min-height: 100vh;
       overflow-x: hidden;
+      background: transparent;
     }
 
     canvas {
       position: fixed !important;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
       width: 100% !important;
       height: 100% !important;
+      pointer-events: none;
+    }
+
+    .site-nav,
+    main {
+      position: relative;
+      z-index: 1;
     }
 
     .site-nav {
@@ -77,14 +84,10 @@
       transition: opacity 160ms ease;
     }
 
-    .site-nav a:first-child {
-      opacity: 0.55;
-    }
+    .site-nav a:first-child { opacity: 0.55; }
 
     .site-nav a:hover,
-    .site-nav a:focus-visible {
-      opacity: 1;
-    }
+    .site-nav a:focus-visible { opacity: 1; }
 
     main {
       min-height: 100vh;
@@ -145,21 +148,21 @@
       justify-content: center;
       padding: 1.1rem 1.3rem;
       color: white;
-      background: rgba(34, 38, 36, 0.62);
+      background: rgba(34, 38, 36, 0.42);
       border: 1px solid rgba(255, 255, 255, 0.28);
       border-top: 3px solid transparent;
       border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
       text-decoration: none;
       box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.22);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
     }
 
     .download:hover,
     .download:focus-visible {
       transform: translateY(-3px);
-      background: rgba(47, 47, 47, 0.82);
+      background: rgba(47, 47, 47, 0.68);
       outline: none;
     }
 
@@ -193,34 +196,18 @@
         padding: 0.8rem 1.2rem;
       }
 
-      .site-nav a {
-        font-size: 0.78rem;
-      }
+      .site-nav a { font-size: 0.78rem; }
 
       main {
         width: min(100% - 2rem, 42rem);
         padding-top: 7rem;
       }
 
-      .hero {
-        margin-left: 0;
-      }
-
-      .eyebrow {
-        font-size: 1rem;
-      }
-
-      h1 {
-        font-size: clamp(3.8rem, 19vw, 6rem);
-      }
-
-      .subtitle {
-        font-size: 1rem;
-      }
-
-      .downloads {
-        grid-template-columns: 1fr;
-      }
+      .hero { margin-left: 0; }
+      .eyebrow { font-size: 1rem; }
+      h1 { font-size: clamp(3.8rem, 19vw, 6rem); }
+      .subtitle { font-size: 1rem; }
+      .downloads { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
