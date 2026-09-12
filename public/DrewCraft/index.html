@@ -40,11 +40,19 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      isolation: isolate;
     }
 
-    canvas {
-      position: fixed !important;
+    #flow-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: rgb(34, 38, 36);
+    }
+
+    #flow-bg canvas {
+      position: absolute !important;
       inset: 0 !important;
       z-index: 0 !important;
       width: 100% !important;
@@ -54,13 +62,8 @@
 
     .page-shell {
       position: relative;
-      z-index: 100;
+      z-index: 10;
       min-height: 100vh;
-      pointer-events: none;
-    }
-
-    .page-shell a {
-      pointer-events: auto;
     }
 
     .site-nav {
@@ -75,7 +78,7 @@
       padding: 1rem;
       border-top: solid 3px;
       border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
-      z-index: 110;
+      z-index: 20;
     }
 
     .site-nav a {
@@ -94,7 +97,7 @@
 
     main {
       position: relative;
-      z-index: 100;
+      z-index: 10;
       min-height: 100vh;
       width: min(70rem, calc(100% - 3rem));
       margin: 0 auto;
@@ -155,10 +158,11 @@
       padding: 1.1rem 1.3rem;
       color: rgb(34, 38, 36);
       background: linear-gradient(135deg, rgb(242, 255, 122) 0%, rgb(250, 255, 117) 45%, rgb(255, 255, 255) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       text-decoration: none;
-      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.28);
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
       transition: transform 150ms ease, filter 150ms ease;
+      overflow: hidden;
     }
 
     .download:hover,
@@ -238,6 +242,8 @@
   </style>
 </head>
 <body>
+  <div id="flow-bg" aria-hidden="true"></div>
+
   <div class="page-shell">
     <nav class="site-nav" aria-label="Site navigation">
       <a href="/">Drew Steindl</a>
@@ -266,6 +272,6 @@
     </main>
   </div>
 
-  <script src="/background.js"></script>
+  <script src="./background.js"></script>
 </body>
 </html>
