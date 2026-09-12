@@ -17,11 +17,10 @@
       color-scheme: dark;
       font-family: "Source Code Pro", monospace;
       color: rgba(255, 255, 255, 0.87);
-      background-color: rgb(34, 38, 36);
+      background: rgb(34, 38, 36);
       --color-primary: rgb(255, 255, 255);
       --color-secondary: rgb(250, 255, 117);
       --color-secondary-soft: rgb(249, 251, 177);
-      --color-tertiary: rgb(47, 47, 47);
       font-synthesis: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
@@ -30,7 +29,8 @@
 
     * { box-sizing: border-box; }
 
-    html {
+    html,
+    body {
       margin: 0;
       min-width: 320px;
       min-height: 100%;
@@ -38,26 +38,29 @@
     }
 
     body {
-      margin: 0;
-      min-width: 320px;
       min-height: 100vh;
       overflow-x: hidden;
-      background: transparent;
+      isolation: isolate;
     }
 
     canvas {
       position: fixed !important;
-      inset: 0;
-      z-index: 0;
+      inset: 0 !important;
+      z-index: 0 !important;
       width: 100% !important;
       height: 100% !important;
+      pointer-events: none !important;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 100;
+      min-height: 100vh;
       pointer-events: none;
     }
 
-    .site-nav,
-    main {
-      position: relative;
-      z-index: 1;
+    .page-shell a {
+      pointer-events: auto;
     }
 
     .site-nav {
@@ -72,7 +75,7 @@
       padding: 1rem;
       border-top: solid 3px;
       border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
-      z-index: 10;
+      z-index: 110;
     }
 
     .site-nav a {
@@ -90,6 +93,8 @@
     .site-nav a:focus-visible { opacity: 1; }
 
     main {
+      position: relative;
+      z-index: 100;
       min-height: 100vh;
       width: min(70rem, calc(100% - 3rem));
       margin: 0 auto;
@@ -142,40 +147,38 @@
 
     .download {
       position: relative;
+      min-width: 0;
       min-height: 5.25rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 1.1rem 1.3rem;
-      color: white;
-      background: rgba(34, 38, 36, 0.42);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-top: 3px solid transparent;
-      border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
+      color: rgb(34, 38, 36);
+      background: linear-gradient(135deg, rgb(242, 255, 122) 0%, rgb(250, 255, 117) 45%, rgb(255, 255, 255) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.8);
       text-decoration: none;
-      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.22);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.28);
+      transition: transform 150ms ease, filter 150ms ease;
     }
 
     .download:hover,
     .download:focus-visible {
       transform: translateY(-3px);
-      background: rgba(47, 47, 47, 0.68);
-      outline: none;
+      filter: brightness(1.05);
+      outline: 2px solid white;
+      outline-offset: 2px;
     }
 
     .download strong {
-      color: var(--color-secondary-soft);
+      color: rgb(34, 38, 36);
       font-size: 1.08rem;
+      line-height: 1.25;
       font-weight: 700;
-      text-shadow: 1px 1px 2px black;
     }
 
     .download span {
       margin-top: 0.28rem;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(34, 38, 36, 0.72);
       font-size: 0.76rem;
       font-weight: 600;
     }
@@ -207,7 +210,19 @@
       .eyebrow { font-size: 1rem; }
       h1 { font-size: clamp(3.8rem, 19vw, 6rem); }
       .subtitle { font-size: 1rem; }
-      .downloads { grid-template-columns: 1fr; }
+
+      .downloads {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem;
+      }
+
+      .download {
+        min-height: 4.75rem;
+        padding: 0.85rem 0.7rem;
+      }
+
+      .download strong { font-size: clamp(0.72rem, 3.2vw, 0.95rem); }
+      .download span { font-size: clamp(0.6rem, 2.4vw, 0.72rem); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -223,31 +238,33 @@
   </style>
 </head>
 <body>
-  <nav class="site-nav" aria-label="Site navigation">
-    <a href="/">Drew Steindl</a>
-    <a href="/DrewCraft/" aria-current="page">DrewCraft</a>
-  </nav>
+  <div class="page-shell">
+    <nav class="site-nav" aria-label="Site navigation">
+      <a href="/">Drew Steindl</a>
+      <a href="/DrewCraft/" aria-current="page">DrewCraft</a>
+    </nav>
 
-  <main>
-    <section class="hero" aria-labelledby="drewcraft-title">
-      <p class="eyebrow">Minecraft, without the setup.</p>
-      <h1 id="drewcraft-title">DrewCraft</h1>
-      <p class="subtitle">One-click install. The launcher handles Minecraft, Java, mods, configs, and updates for you.</p>
+    <main>
+      <section class="hero" aria-labelledby="drewcraft-title">
+        <p class="eyebrow">Minecraft, without the setup.</p>
+        <h1 id="drewcraft-title">DrewCraft</h1>
+        <p class="subtitle">One-click install. The launcher handles Minecraft, Java, mods, configs, and updates for you.</p>
 
-      <div class="downloads">
-        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
-          <strong>Download for Windows</strong>
-          <span>.exe installer</span>
-        </a>
-        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
-          <strong>Download for Mac</strong>
-          <span>.dmg installer</span>
-        </a>
-      </div>
+        <div class="downloads">
+          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
+            <strong>Download for Windows</strong>
+            <span>.exe installer</span>
+          </a>
+          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
+            <strong>Download for Mac</strong>
+            <span>.dmg installer</span>
+          </a>
+        </div>
 
-      <p class="note">Install it, launch it, and play. Updates are handled automatically.</p>
-    </section>
-  </main>
+        <p class="note">Install it, launch it, and play. Updates are handled automatically.</p>
+      </section>
+    </main>
+  </div>
 
   <script src="/background.js"></script>
 </body>
