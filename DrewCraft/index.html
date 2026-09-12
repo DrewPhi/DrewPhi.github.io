@@ -4,274 +4,404 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#222624" />
-  <meta name="description" content="DrewCraft — one-click Minecraft server install for Windows and macOS." />
+  <meta name="description" content="Download the DrewCraft launcher for Windows or macOS." />
   <title>DrewCraft</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
 
   <style>
     :root {
-      color-scheme: dark;
-      font-family: "Source Code Pro", monospace;
-      color: rgba(255, 255, 255, 0.87);
-      background: rgb(34, 38, 36);
-      --color-primary: rgb(255, 255, 255);
-      --color-secondary: rgb(250, 255, 117);
-      --color-secondary-soft: rgb(249, 251, 177);
-      font-synthesis: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      --bg: #222624;
+      --bg-deep: #171a18;
+      --panel: #2f332f;
+      --ink: #f8f8f2;
+      --muted: #aeb5ad;
+      --yellow: #faff75;
+      --yellow-soft: #f9fbb1;
+      --line: rgba(250, 255, 117, 0.24);
     }
 
     * { box-sizing: border-box; }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       min-width: 320px;
       min-height: 100%;
-      background: rgb(34, 38, 36);
+      background: var(--bg-deep);
     }
 
     body {
       min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       overflow-x: hidden;
     }
 
-    #flow-bg {
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      z-index: 0;
-      overflow: hidden;
       pointer-events: none;
-      background: rgb(34, 38, 36);
+      background:
+        radial-gradient(circle at 17% 18%, rgba(250,255,117,.10), transparent 23rem),
+        radial-gradient(circle at 78% 74%, rgba(255,255,255,.055), transparent 28rem),
+        linear-gradient(rgba(250,255,117,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250,255,117,.045) 1px, transparent 1px),
+        linear-gradient(135deg, transparent 0 49.4%, rgba(255,255,255,.018) 49.5% 50.5%, transparent 50.6% 100%);
+      background-size: auto, auto, 48px 48px, 48px 48px, 192px 192px;
+      opacity: .95;
     }
 
-    #flow-bg canvas {
-      position: absolute !important;
-      inset: 0 !important;
-      z-index: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      pointer-events: none !important;
-    }
-
-    .page-shell {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-    }
-
-    .site-nav {
+    body::after {
+      content: "";
       position: fixed;
-      top: 2%;
-      left: 20%;
-      width: min(34rem, 48vw);
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 0 16%, rgba(250,255,117,.04) 16% 16.2%, transparent 16.2% 100%),
+        linear-gradient(25deg, transparent 0 70%, rgba(250,255,117,.025) 70% 70.2%, transparent 70.2% 100%);
+      mix-blend-mode: screen;
+    }
+
+    .wrap {
+      position: relative;
+      min-height: 100vh;
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(30px, 5vw, 64px) 0 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .topline {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      padding: 1rem;
-      border-top: solid 3px;
-      border-image: linear-gradient(to left, rgb(248, 248, 248), rgb(242, 255, 122)) 1;
-      z-index: 20;
+      gap: 16px;
+      margin-bottom: clamp(44px, 8vh, 86px);
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
 
-    .site-nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-shadow: 2px 2px 4px black;
-      transition: opacity 160ms ease;
-    }
-
-    .site-nav a:first-child { opacity: 0.55; }
-
-    .site-nav a:hover,
-    .site-nav a:focus-visible { opacity: 1; }
-
-    main {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-      width: min(70rem, calc(100% - 3rem));
-      margin: 0 auto;
-      display: flex;
+    .brand-mark {
+      display: inline-flex;
       align-items: center;
-      padding: 8rem 0 5rem;
+      gap: 10px;
+      color: var(--yellow-soft);
+      font-weight: 800;
+    }
+
+    .brand-mark::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--yellow);
+      box-shadow: 14px 0 0 rgba(250,255,117,.32), 28px 0 0 rgba(250,255,117,.12);
+      margin-right: 28px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 12px rgba(250,255,117,.75);
     }
 
     .hero {
-      width: min(56rem, 100%);
-      margin-left: clamp(0rem, 7vw, 7rem);
-      text-align: left;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(270px, .75fr);
+      gap: clamp(34px, 7vw, 82px);
+      align-items: end;
     }
 
-    .eyebrow {
-      margin: 0 0 0.45rem;
-      color: var(--color-secondary-soft);
-      font-size: clamp(1rem, 1.8vw, 1.45rem);
-      font-weight: 700;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    .kicker {
+      margin: 0 0 13px;
+      color: var(--yellow-soft);
+      font-size: clamp(13px, 1.5vw, 16px);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
     h1 {
       margin: 0;
-      color: var(--color-primary);
-      font-size: clamp(4rem, 9vw, 7.5rem);
-      line-height: 0.94;
-      letter-spacing: -0.07em;
-      font-weight: 700;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      font-size: clamp(64px, 12vw, 150px);
+      line-height: .77;
+      letter-spacing: -.085em;
+      font-weight: 950;
+      color: white;
+      text-shadow: 0 12px 34px rgba(0,0,0,.38);
     }
 
-    .subtitle {
-      max-width: 45rem;
-      margin: 1.25rem 0 0;
-      color: white;
-      font-size: clamp(1rem, 1.8vw, 1.35rem);
-      line-height: 1.65;
-      font-weight: 600;
-      text-shadow: 1px 1px 3px black;
+    .lede {
+      max-width: 690px;
+      margin: 30px 0 0;
+      color: #e9ece7;
+      font-size: clamp(16px, 2vw, 21px);
+      line-height: 1.6;
+      font-weight: 650;
     }
+
+    .lede em {
+      color: var(--yellow-soft);
+      font-style: normal;
+    }
+
+    .side-card {
+      border-left: 2px solid var(--yellow);
+      padding: 5px 0 5px 23px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .side-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .rail {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin: clamp(42px, 8vh, 76px) 0 24px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .rail span {
+      padding: 15px 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .rail span + span { border-left: 1px solid var(--line); }
 
     .downloads {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      width: min(42rem, 100%);
-      margin-top: 2.4rem;
+      gap: clamp(10px, 2vw, 18px);
     }
 
     .download {
       position: relative;
       min-width: 0;
-      min-height: 5.25rem;
+      min-height: clamp(112px, 15vw, 142px);
+      padding: clamp(18px, 3vw, 28px);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1.1rem 1.3rem;
-      color: rgb(34, 38, 36);
-      background: linear-gradient(135deg, rgb(242, 255, 122) 0%, rgb(250, 255, 117) 45%, rgb(255, 255, 255) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      color: var(--bg-deep);
+      background: linear-gradient(135deg, #faff75 0%, #f9fbb1 55%, #ffffff 135%);
+      border: 0;
       text-decoration: none;
-      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 150ms ease, filter 150ms ease;
+      box-shadow: 0 18px 44px rgba(0,0,0,.25);
       overflow: hidden;
+      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
+    }
+
+    .download::before {
+      content: "";
+      position: absolute;
+      width: 108px;
+      height: 108px;
+      right: -28px;
+      top: -35px;
+      border: 18px solid rgba(34,38,36,.08);
+      transform: rotate(45deg);
+    }
+
+    .download::after {
+      content: "↘";
+      position: absolute;
+      top: 18px;
+      right: 21px;
+      font-size: 22px;
+      font-weight: 900;
+      opacity: .55;
     }
 
     .download:hover,
     .download:focus-visible {
-      transform: translateY(-3px);
-      filter: brightness(1.05);
-      outline: 2px solid white;
-      outline-offset: 2px;
+      transform: translateY(-4px);
+      filter: saturate(1.08) brightness(1.025);
+      box-shadow: 0 24px 54px rgba(0,0,0,.34);
+      outline: none;
     }
 
-    .download strong {
-      color: rgb(34, 38, 36);
-      font-size: 1.08rem;
-      line-height: 1.25;
-      font-weight: 700;
+    .os {
+      position: relative;
+      z-index: 1;
     }
 
-    .download span {
-      margin-top: 0.28rem;
-      color: rgba(34, 38, 36, 0.72);
-      font-size: 0.76rem;
-      font-weight: 600;
+    .os small {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(23,26,24,.58);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .15em;
+      text-transform: uppercase;
     }
 
-    .note {
-      margin: 1.4rem 0 0;
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-shadow: 1px 1px 2px black;
+    .os strong {
+      display: block;
+      font-size: clamp(18px, 2.4vw, 28px);
+      line-height: 1.05;
+      letter-spacing: -.035em;
     }
 
-    @media (max-width: 768px) {
-      .site-nav {
-        top: 2%;
-        left: 0;
-        width: 100%;
-        padding: 0.8rem 1.2rem;
-      }
-
-      .site-nav a { font-size: 0.78rem; }
-
-      main {
-        width: min(100% - 2rem, 42rem);
-        padding-top: 7rem;
-      }
-
-      .hero { margin-left: 0; }
-      .eyebrow { font-size: 1rem; }
-      h1 { font-size: clamp(3.8rem, 19vw, 6rem); }
-      .subtitle { font-size: 1rem; }
-
-      .downloads {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.65rem;
-      }
-
-      .download {
-        min-height: 4.75rem;
-        padding: 0.85rem 0.7rem;
-      }
-
-      .download strong { font-size: clamp(0.72rem, 3.2vw, 0.95rem); }
-      .download span { font-size: clamp(0.6rem, 2.4vw, 0.72rem); }
+    .filetype {
+      position: relative;
+      z-index: 1;
+      align-self: flex-end;
+      padding: 5px 7px;
+      border: 1px solid rgba(23,26,24,.22);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-      }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 22px;
+      background: rgba(250,255,117,.12);
+      border: 1px solid rgba(250,255,117,.12);
+    }
+
+    .step {
+      min-width: 0;
+      padding: 16px 18px;
+      background: rgba(34,38,36,.92);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .step b {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--yellow-soft);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: rgba(255,255,255,.38);
+      font-size: 10px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 22px, 1080px); }
+      .topline { margin-bottom: 48px; }
+      .hero { grid-template-columns: 1fr; gap: 28px; }
+      .side-card { max-width: 520px; }
+      .rail span { padding: 12px 6px; font-size: 9px; }
+      .download { padding: 17px 14px; min-height: 108px; }
+      .download::after { top: 13px; right: 14px; font-size: 17px; }
+      .filetype { font-size: 8px; padding: 4px 5px; }
+      .steps { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+
+    @media (max-width: 430px) {
+      .brand-mark { font-size: 10px; }
+      .status { font-size: 9px; }
+      h1 { font-size: clamp(58px, 20vw, 86px); }
+      .lede { font-size: 14px; }
+      .rail { grid-template-columns: repeat(2, 1fr); }
+      .rail span:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
+      .rail span:nth-child(4) { border-top: 1px solid var(--line); }
+      .download { min-height: 96px; padding: 14px 10px; }
+      .os small { font-size: 8px; margin-bottom: 5px; }
+      .os strong { font-size: clamp(14px, 4.2vw, 18px); }
+      .filetype { display: none; }
     }
   </style>
 </head>
 <body>
-  <div id="flow-bg" aria-hidden="true"></div>
+  <main class="wrap">
+    <header class="topline">
+      <div class="brand-mark">DrewCraft launcher</div>
+      <div class="status">ready to install</div>
+    </header>
 
-  <div class="page-shell">
-    <nav class="site-nav" aria-label="Site navigation">
-      <a href="/">Drew Steindl</a>
-      <a href="/DrewCraft/" aria-current="page">DrewCraft</a>
-    </nav>
+    <section class="hero">
+      <div>
+        <p class="kicker">A private modded Minecraft world</p>
+        <h1>DrewCraft</h1>
+        <p class="lede">Download once. Open it. Play. <em>Minecraft, Java, mods, configs, and updates are handled for you.</em></p>
+      </div>
 
-    <main>
-      <section class="hero" aria-labelledby="drewcraft-title">
-        <p class="eyebrow">Minecraft, without the setup.</p>
-        <h1 id="drewcraft-title">DrewCraft</h1>
-        <p class="subtitle">One-click install. The launcher handles Minecraft, Java, mods, configs, and updates for you.</p>
+      <aside class="side-card">
+        <strong>No setup ritual.</strong>
+        You should never need to hunt for a mod, match a version, install Forge by hand, or wonder whether your client is current.
+      </aside>
+    </section>
 
-        <div class="downloads">
-          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
-            <strong>Download for Windows</strong>
-            <span>.exe installer</span>
-          </a>
-          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
-            <strong>Download for Mac</strong>
-            <span>.dmg installer</span>
-          </a>
-        </div>
+    <div class="rail" aria-label="Launcher features">
+      <span>one-click install</span>
+      <span>automatic updates</span>
+      <span>managed Java</span>
+      <span>Windows + macOS</span>
+    </div>
 
-        <p class="note">Install it, launch it, and play. Updates are handled automatically.</p>
-      </section>
-    </main>
-  </div>
+    <section class="downloads" aria-label="Download DrewCraft">
+      <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
+        <span class="os">
+          <small>Download DrewCraft for</small>
+          <strong>Windows</strong>
+        </span>
+        <span class="filetype">.exe</span>
+      </a>
 
-  <script src="./background.js"></script>
+      <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
+        <span class="os">
+          <small>Download DrewCraft for</small>
+          <strong>macOS</strong>
+        </span>
+        <span class="filetype">.dmg</span>
+      </a>
+    </section>
+
+    <section class="steps" aria-label="Install instructions">
+      <div class="step"><b>01 · Download</b>Choose the installer for your computer.</div>
+      <div class="step"><b>02 · Open</b>Run DrewCraft and let it prepare everything.</div>
+      <div class="step"><b>03 · Play</b>Launch the game. Future updates are automatic.</div>
+    </section>
+
+    <footer>
+      <span>DrewCraft // launcher portal</span>
+      <span>Built to make joining the server boringly easy.</span>
+    </footer>
+  </main>
 </body>
 </html>
