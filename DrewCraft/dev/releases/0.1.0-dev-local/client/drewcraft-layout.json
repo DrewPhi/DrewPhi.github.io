@@ -1,0 +1,161 @@
+{
+  "files": [
+    {
+      "id": "distant_horizons",
+      "path": "mods/DistantHorizons-3.2.0-b-1.21.1-fabric-neoforge.jar",
+      "sha256": "d6a7a963f794501678113e2545d8b25c90e123ef6b9256bb5716907d059e1ef5"
+    },
+    {
+      "id": "fastfurnace",
+      "path": "mods/FastFurnace-1.21.1-9.0.1.jar",
+      "sha256": "4a8743c5d870aa9885d65e20d728c76fec894e01e81d1b49ef0f4459a67f0eea"
+    },
+    {
+      "id": "fastsuite",
+      "path": "mods/FastSuite-1.21.1-6.0.7.jar",
+      "sha256": "3e274cd01bdc27dff8e2514213f1c45306c86fe38e4271a4209bc1471de6c70d"
+    },
+    {
+      "id": "fastworkbench",
+      "path": "mods/FastWorkbench-1.21.1-9.1.3.jar",
+      "sha256": "abf593ba1584c761f198989008d334c95932afe0a7c6b16af4baa16b54fd1449"
+    },
+    {
+      "id": "glitchcore",
+      "path": "mods/GlitchCore-neoforge-1.21.1-2.1.0.2.jar",
+      "sha256": "d9ea421e7449a35cf3adc41c9f740156342b7b17a08b1be843660608af7b60f9"
+    },
+    {
+      "id": "immediatelyfast",
+      "path": "mods/ImmediatelyFast-NeoForge-1.6.13+1.21.1.jar",
+      "sha256": "fa3aec87e9880d0a8ab9663c96ad0206fd59de5e71acfccbebc264f7ad0ae153"
+    },
+    {
+      "id": "immersive_vehicles",
+      "path": "mods/Immersive Vehicles-1.21.1-24.0.0.jar",
+      "sha256": "1d2f7512604636265703b29fdf13d7f8ef2323694b6435f4392973da6e78d251"
+    },
+    {
+      "id": "mts_official_pack",
+      "path": "mods/MTS Official Pack-1.21.1-V29.jar",
+      "sha256": "f82e67f6c0cf85f79c6b295ef874890e0dc4460204d7768a4a46354d87a0b5d8"
+    },
+    {
+      "id": "project_atmosphere",
+      "path": "mods/NeoForge-projectatmosphere-0.9.1.2.jar",
+      "sha256": "d866b069e94554a25985e5f18f128e4655ff731e2d5ae917a9beb1ba01b34c48"
+    },
+    {
+      "id": "placebo",
+      "path": "mods/Placebo-1.21.1-9.9.2.jar",
+      "sha256": "1a844a5b081813b1edb82656329e54d38389ed470f6a6516a5887f5303d7daad"
+    },
+    {
+      "id": "scalablelux",
+      "path": "mods/ScalableLux-0.1.0.1+neoforge.1cb1e91-all.jar",
+      "sha256": "74340a37af858014ecf66068054bed3ab778b22d24956d348a2ec2bc3c585cb5"
+    },
+    {
+      "id": "serene_seasons",
+      "path": "mods/SereneSeasons-neoforge-1.21.1-10.1.0.3.jar",
+      "sha256": "86d89fce593f868cb6b542943c0f82850ca56970fe0327e401966d8d0420861d"
+    },
+    {
+      "id": "alltheleaks",
+      "path": "mods/alltheleaks-1.1.12+1.21.1-neoforge.jar",
+      "sha256": "ca64ec07c29cadb0e7703e993fbaad26029ebc4203626d2638aefe989e5be74f"
+    },
+    {
+      "id": "architectury",
+      "path": "mods/architectury-13.0.11-neoforge.jar",
+      "sha256": "9cc92f2c09533fc5482c60f993bd891c655a0e32b637037cdcb7c2b23adedeeb"
+    },
+    {
+      "id": "connectivity",
+      "path": "mods/connectivity-1.21.1-7.6.jar",
+      "sha256": "2366973ddae5ba00b9ba15a26e5b610a6648038b9f2549bf81b9ae61342b281a"
+    },
+    {
+      "id": "create",
+      "path": "mods/create-1.21.1-6.0.10.jar",
+      "sha256": "ef87fe5709f1ba1f5b8bb20a2925b5afb4669e178fd6d8bf10c167759eefe37a"
+    },
+    {
+      "id": "create_radars",
+      "path": "mods/create_radar-0.4.9.4-1.21.1.jar",
+      "sha256": "4554359fee389b1c255b4cef23ac41e978b2a371cec9e952185f4ec0a90ee930"
+    },
+    {
+      "id": "create_big_cannons",
+      "path": "mods/createbigcannons-5.11.7+mc.1.21.1.jar",
+      "sha256": "ea017ab94637032d039899d88404838d173fa0e6286657cae6a6c3af459e87ca"
+    },
+    {
+      "id": "cupboard",
+      "path": "mods/cupboard-1.21.1-4.1.jar",
+      "sha256": "7d3f1bcca3acf2e7b1f3d359d5e0691cbb5a0f95869064752e7612b2d13e5b9e"
+    },
+    {
+      "id": "drewcraft_mod",
+      "path": "mods/drewcraft-0.1.0-dev.1.jar",
+      "sha256": "7a14224289d005ae627b23f1f26723323ff693aa88564c1340b7cc058776dee9",
+      "size": 302333,
+      "source": "repository_build"
+    },
+    {
+      "id": "embeddium",
+      "path": "mods/embeddium-1.0.15+mc1.21.1.jar",
+      "sha256": "3aac4c4c6e82d78d8dda4c611d68c672d1061b42bb6954331e3c2e7f14c451e1"
+    },
+    {
+      "id": "entity_culling",
+      "path": "mods/entityculling-neoforge-1.10.5-mc1.21.1.jar",
+      "sha256": "2eacd2bada39bf1d1ef695736646790c619c0e6cdeaf3d7e3cfc9139d26fae02"
+    },
+    {
+      "id": "ferritecore",
+      "path": "mods/ferritecore-7.0.3-neoforge.jar",
+      "sha256": "d87ea28262715ebff45b8a82d493e6b468e7a4521bc021df5d88302196d030a8"
+    },
+    {
+      "id": "gabous_libs",
+      "path": "mods/gaboulibs-neoforge-1.9.jar",
+      "sha256": "d8612146ba3789495cdbef705c9bc2b807a5c00d9b4eb3da53e75809068e0327"
+    },
+    {
+      "id": "lithium",
+      "path": "mods/lithium-neoforge-0.15.4+mc1.21.1.jar",
+      "sha256": "488f33216030c1cb0baa33e59de3d657d08d5795a6c2080c8c8bbbc133fc8757"
+    },
+    {
+      "id": "modernfix",
+      "path": "mods/modernfix-neoforge-5.27.24+mc1.21.1.jar",
+      "sha256": "e6e9446890f0feb3aab3f6e73ae18cb17575c370f232179fef7baa30e61538fe"
+    },
+    {
+      "id": "moreculling",
+      "path": "mods/moreculling-neoforge-1.21.1-1.0.10.jar",
+      "sha256": "008068af65deec86382b4fdde61e7f495e54861cc28d5a5b000c32b435213ed3"
+    },
+    {
+      "id": "ritchies_projectile_library",
+      "path": "mods/ritchiesprojectilelib-2.1.2-mc.1.21.1-neoforge.jar",
+      "sha256": "cc509060833736fb650aa4c36b1ce33a7eeeb9ca6e9f8e80a7c951c9e7487b24"
+    },
+    {
+      "id": "simple_clouds",
+      "path": "mods/simpleclouds-0.7.3+1.21.1-all.jar",
+      "sha256": "416e31ea7976eac958824391daec3be704842175823718946398219857ec44d9"
+    },
+    {
+      "id": "terrain_diffusion_plus",
+      "path": "mods/terrain-diffusion-mc-neoforge-1.21.1-2.3.0-cpu.jar",
+      "sha256": "7c98fa86e15651a832028ce759cdfec025845c8309b0fde243600d77ad494926"
+    }
+  ],
+  "profiles": [
+    "stage2_base_performance"
+  ],
+  "schema_version": 1,
+  "target": "client"
+}
