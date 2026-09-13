@@ -3,102 +3,63 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#1a1d1b" />
+  <meta name="theme-color" content="#171a18" />
   <meta name="description" content="Download the DrewCraft launcher for Windows or macOS." />
   <title>DrewCraft</title>
 
   <style>
     :root {
-      --bg: #222624;
-      --bg-deep: #171a18;
-      --surface: rgba(255,255,255,.045);
-      --ink: #fff;
-      --muted: #aeb6af;
+      --bg: #171a18;
+      --bg-top: #232824;
+      --text: #ffffff;
+      --muted: #b9c0b9;
       --yellow: #faff75;
       --yellow-soft: #f9fbb1;
-      --line: rgba(250,255,117,.18);
-      --line-soft: rgba(255,255,255,.08);
     }
 
     * { box-sizing: border-box; }
 
     html,
     body {
+      margin: 0;
       width: 100%;
       height: 100%;
-      margin: 0;
       overflow: hidden;
-      background: var(--bg-deep);
+      background: var(--bg);
     }
 
     body {
       min-width: 320px;
-      color: var(--ink);
+      color: var(--text);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       background:
-        radial-gradient(circle at 50% 0%, rgba(250,255,117,.11), transparent 31rem),
-        radial-gradient(circle at 9% 82%, rgba(250,255,117,.035), transparent 24rem),
-        linear-gradient(180deg, #242925 0%, var(--bg-deep) 82%);
+        radial-gradient(circle at 50% 32%, rgba(250,255,117,.08), transparent 34rem),
+        linear-gradient(180deg, var(--bg-top), var(--bg));
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(rgba(250,255,117,.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(250,255,117,.02) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: linear-gradient(to bottom, black, transparent 90%);
-      opacity: .72;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: min(1040px, calc(100% - 32px));
+    main {
+      width: min(760px, calc(100% - 28px));
       height: 100vh;
       height: 100dvh;
       margin: 0 auto;
       padding:
-        max(10px, env(safe-area-inset-top))
+        max(18px, env(safe-area-inset-top))
         0
-        max(10px, env(safe-area-inset-bottom));
-      display: grid;
-      grid-template-rows:
-        minmax(0, .95fr)
-        minmax(0, 1.35fr)
-        minmax(0, .70fr);
-      row-gap: clamp(8px, 1.3vh, 14px);
-    }
-
-    .hero-band,
-    .features-band,
-    .download-band {
-      min-height: 0;
+        max(18px, env(safe-area-inset-bottom));
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-    }
-
-    .hero {
-      width: 100%;
       text-align: center;
     }
 
-    .tag {
-      margin: 0 0 clamp(3px, .55vh, 7px);
+    .eyebrow {
+      margin: 0 0 18px;
       color: var(--yellow-soft);
-      font-size: clamp(8px, .95vw, 11px);
-      font-weight: 900;
-      letter-spacing: .18em;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .16em;
       text-transform: uppercase;
-    }
-
-    .wordmark {
-      display: grid;
-      place-items: center;
     }
 
     h1 {
@@ -107,13 +68,11 @@
       align-items: center;
       justify-content: center;
       gap: .035em;
-      font-size: clamp(50px, min(11vw, 13vh), 126px);
-      line-height: .82;
+      font-size: clamp(64px, 13vw, 132px);
+      line-height: .86;
       letter-spacing: -.085em;
       font-weight: 950;
-      color: white;
       white-space: nowrap;
-      text-shadow: 0 18px 42px rgba(0,0,0,.24);
     }
 
     .drew {
@@ -140,287 +99,141 @@
       100% { transform: rotate(1800deg); }
     }
 
-    .lede {
-      max-width: 760px;
-      margin: clamp(7px, 1.1vh, 13px) auto 0;
-      color: #d8ded9;
-      font-size: clamp(11px, min(1.35vw, 1.8vh), 16px);
-      line-height: 1.45;
+    .summary {
+      max-width: 620px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: clamp(14px, 2vw, 18px);
+      line-height: 1.6;
       text-wrap: balance;
     }
 
-    .features {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: clamp(7px, 1vw, 11px);
-      list-style: none;
-    }
-
-    .feature {
-      position: relative;
-      min-width: 0;
-      min-height: 0;
-      padding: clamp(9px, 1.3vh, 15px) clamp(10px, 1.25vw, 16px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), var(--surface));
-      border: 1px solid var(--line-soft);
-      overflow: hidden;
-    }
-
-    .feature::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--yellow), transparent 76%);
-      opacity: .42;
-    }
-
-    .feature-number {
-      margin-bottom: clamp(3px, .45vh, 6px);
-      color: rgba(250,255,117,.50);
-      font-size: clamp(7px, .7vw, 9px);
-      font-weight: 900;
-      letter-spacing: .12em;
-    }
-
-    .feature strong {
-      margin-bottom: clamp(2px, .35vh, 5px);
-      color: var(--yellow-soft);
-      font-size: clamp(10px, 1.08vw, 13px);
-      line-height: 1.18;
-    }
-
-    .feature .detail {
-      color: var(--muted);
-      font-size: clamp(8px, .86vw, 10.5px);
-      line-height: 1.34;
-    }
-
-    .download-shell {
-      width: 100%;
-      padding: clamp(8px, 1.15vh, 13px);
-      background: rgba(18,21,19,.54);
-      border: 1px solid var(--line);
-      box-shadow: 0 18px 46px rgba(0,0,0,.24);
-    }
-
-    .download-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin: 0 2px clamp(6px, .85vh, 9px);
-      text-align: left;
-    }
-
-    .download-heading strong {
-      color: white;
-      font-size: clamp(9px, .95vw, 12px);
-    }
-
-    .download-heading span {
-      color: var(--muted);
-      font-size: clamp(7px, .72vw, 9px);
-      line-height: 1.25;
-      text-align: right;
-    }
-
     .downloads {
+      width: min(640px, 100%);
+      margin-top: 38px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(7px, .9vw, 10px);
+      gap: 14px;
     }
 
     .download {
-      position: relative;
       min-width: 0;
-      min-height: clamp(58px, 7.8vh, 82px);
-      padding: clamp(8px, 1.15vh, 13px) clamp(9px, 1.15vw, 14px);
+      min-height: 112px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      color: var(--bg-deep);
-      background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-soft) 58%, #fff 128%);
+      color: #171a18;
+      background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-soft) 62%, #fff 130%);
       text-decoration: none;
       text-align: left;
-      box-shadow: 0 14px 30px rgba(0,0,0,.2);
-      overflow: hidden;
-      transition: transform .16s ease, filter .16s ease, box-shadow .16s ease;
-    }
-
-    .download::after {
-      content: "↘";
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      font-size: 12px;
-      font-weight: 900;
-      opacity: .34;
+      box-shadow: 0 18px 42px rgba(0,0,0,.28);
+      transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
     }
 
     .download:hover,
     .download:focus-visible {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       filter: brightness(1.035);
-      box-shadow: 0 18px 38px rgba(0,0,0,.28);
+      box-shadow: 0 24px 52px rgba(0,0,0,.34);
       outline: 2px solid white;
-      outline-offset: 2px;
+      outline-offset: 3px;
     }
 
     .download small {
-      margin-bottom: 3px;
+      margin-bottom: 7px;
       color: rgba(23,26,24,.58);
-      font-size: clamp(6px, .67vw, 8px);
+      font-size: 9px;
       font-weight: 900;
-      letter-spacing: .13em;
+      letter-spacing: .14em;
       text-transform: uppercase;
     }
 
     .download strong {
-      font-size: clamp(15px, min(2.25vw, 2.9vh), 24px);
+      font-size: clamp(20px, 3vw, 28px);
       line-height: 1;
       letter-spacing: -.035em;
     }
 
     .note {
-      margin: clamp(4px, .55vh, 7px) 0 0;
+      margin: 18px 0 0;
       color: rgba(255,255,255,.42);
-      font-size: clamp(7px, .65vw, 8px);
-      line-height: 1.2;
-      text-align: center;
-    }
-
-    @media (max-width: 760px) {
-      .page {
-        width: calc(100% - 20px);
-        grid-template-rows:
-          minmax(0, .90fr)
-          minmax(0, 1.45fr)
-          minmax(0, .65fr);
-      }
-
-      .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: repeat(2, minmax(0, 1fr));
-      }
-
-      .feature:nth-child(5),
-      .feature:nth-child(6) { display: none; }
-      .download-heading span { display: none; }
+      font-size: 10px;
+      line-height: 1.4;
     }
 
     @media (max-width: 520px) {
-      .page {
-        width: calc(100% - 14px);
-        grid-template-rows:
-          minmax(0, .92fr)
-          minmax(0, 1.42fr)
-          minmax(0, .66fr);
-        row-gap: 7px;
-        padding-top: max(7px, env(safe-area-inset-top));
-        padding-bottom: max(7px, env(safe-area-inset-bottom));
+      main {
+        width: calc(100% - 18px);
+        padding-top: max(12px, env(safe-area-inset-top));
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
       }
 
-      .tag { margin-bottom: 2px; font-size: 7px; }
-      h1 { font-size: clamp(42px, min(17vw, 10.8vh), 66px); }
-
-      .lede {
-        max-width: 30rem;
-        margin-top: 5px;
-        padding: 0 4px;
-        font-size: clamp(9px, 2.8vw, 11px);
-        line-height: 1.28;
+      .eyebrow {
+        margin-bottom: 12px;
+        font-size: 8px;
       }
 
-      .feature {
-        padding: 7px 8px;
+      h1 {
+        font-size: clamp(48px, 18vw, 76px);
       }
 
-      .feature-number { display: none; }
-      .feature strong { margin: 0; font-size: clamp(9px, 2.9vw, 11px); }
-      .feature .detail {
-        margin-top: 2px;
-        font-size: clamp(7px, 2.25vw, 9px);
-        line-height: 1.22;
+      .summary {
+        margin-top: 20px;
+        max-width: 34rem;
+        font-size: clamp(12px, 3.2vw, 14px);
+        line-height: 1.45;
       }
 
-      .download-shell { padding: 6px; }
-      .download-heading { margin: 0 2px 5px; }
-      .download-heading strong { font-size: 8px; }
+      .downloads {
+        margin-top: 28px;
+        gap: 9px;
+      }
 
       .download {
-        min-height: clamp(50px, 7vh, 64px);
-        padding: 7px;
+        min-height: 92px;
+        padding: 14px 11px;
       }
 
-      .download::after { top: 5px; right: 6px; font-size: 9px; }
-      .download small { margin-bottom: 2px; font-size: 5.5px; letter-spacing: .1em; }
-      .download strong { font-size: clamp(12px, 4.4vw, 17px); }
-      .note { margin-top: 4px; font-size: 6.5px; }
-    }
-
-    @media (max-height: 700px) {
-      .page {
-        grid-template-rows:
-          minmax(0, .86fr)
-          minmax(0, 1.50fr)
-          minmax(0, .64fr);
-        row-gap: 6px;
+      .download small {
+        margin-bottom: 5px;
+        font-size: 7px;
+        letter-spacing: .1em;
       }
 
-      .feature-number,
-      .feature .detail,
-      .download-heading span,
-      .note { display: none; }
+      .download strong {
+        font-size: clamp(15px, 5vw, 19px);
+      }
 
-      .feature strong {
-        margin: 0;
-        text-align: center;
+      .note {
+        margin-top: 13px;
+        font-size: 8px;
       }
     }
 
     @media (max-height: 560px) {
-      .tag,
-      .download-heading { display: none; }
+      .eyebrow,
+      .note { display: none; }
 
-      .lede {
-        margin-top: 3px;
-        font-size: clamp(8px, 1.45vw, 10px);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      h1 {
+        font-size: clamp(44px, min(10vw, 16vh), 80px);
       }
 
-      .features {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: 1fr;
+      .summary {
+        margin-top: 14px;
+        font-size: clamp(10px, 1.8vw, 13px);
+        line-height: 1.35;
       }
 
-      .feature:nth-child(n+5) { display: none; }
-      .feature { padding: 5px 6px; }
-      .feature strong { font-size: clamp(7.5px, 1.35vw, 9.5px); }
-
-      .download-shell { padding: 5px; }
-      .download { min-height: clamp(42px, 10vh, 54px); }
-      .download small { display: none; }
-      .download strong { font-size: clamp(12px, 2.4vw, 17px); }
-    }
-
-    @media (max-width: 380px) and (min-height: 561px) {
-      .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-template-rows: 1fr;
+      .downloads {
+        margin-top: 20px;
       }
-      .feature:nth-child(n+3) { display: none; }
+
+      .download {
+        min-height: 72px;
+        padding: 10px 12px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -430,73 +243,28 @@
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero-band">
-      <div class="hero" aria-labelledby="drewcraft-title">
-        <p class="tag">Private modded Minecraft</p>
-        <div class="wordmark">
-          <h1 id="drewcraft-title" aria-label="DrewCraft">
-            <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
-          </h1>
-        </div>
-        <p class="lede">DrewCraft is a large-scale survival world where weather, distance, machines, vehicles, and roaming threats turn exploration and infrastructure into the game.</p>
-      </div>
+  <main>
+    <p class="eyebrow">Private modded Minecraft</p>
+
+    <h1 aria-label="DrewCraft">
+      <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
+    </h1>
+
+    <p class="summary">A huge, weather-beaten survival world built for journeys, machines, aircraft, danger, and friends.</p>
+
+    <section class="downloads" aria-label="Download DrewCraft">
+      <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
+        <small>Download for</small>
+        <strong>Windows</strong>
+      </a>
+
+      <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
+        <small>Download for</small>
+        <strong>macOS</strong>
+      </a>
     </section>
 
-    <section class="features-band" aria-label="DrewCraft highlights">
-      <ul class="features">
-        <li class="feature">
-          <span class="feature-number">01 / WORLD</span>
-          <strong>Huge world, real journeys</strong>
-          <span class="detail">Distant cities, wilderness, roads, railways, and reasons to actually travel.</span>
-        </li>
-        <li class="feature">
-          <span class="feature-number">02 / WEATHER</span>
-          <strong>Living weather</strong>
-          <span class="detail">Wind, moving storms, dramatic skies, and weather you can see coming.</span>
-        </li>
-        <li class="feature">
-          <span class="feature-number">03 / FLIGHT</span>
-          <strong>Planes, vehicles, and radar</strong>
-          <span class="detail">Cross the world by air and build infrastructure that makes distance manageable.</span>
-        </li>
-        <li class="feature">
-          <span class="feature-number">04 / ENGINEERING</span>
-          <strong>Engineering that matters</strong>
-          <span class="detail">Create-powered factories, rail systems, machines, and large-scale builds with purpose.</span>
-        </li>
-        <li class="feature">
-          <span class="feature-number">05 / SURVIVAL</span>
-          <strong>Armies on the horizon</strong>
-          <span class="detail">Hostile forces move through the world and make walls, weapons, and defenses worth building.</span>
-        </li>
-        <li class="feature">
-          <span class="feature-number">06 / EXPLORATION</span>
-          <strong>A world worth changing</strong>
-          <span class="detail">Find dangerous places, destroy threats at their source, and turn wilderness into home.</span>
-        </li>
-      </ul>
-    </section>
-
-    <section class="download-band" aria-label="Download DrewCraft">
-      <div class="download-shell">
-        <div class="download-heading">
-          <strong>Pick your computer. Everything else is handled.</strong>
-          <span>Java, mods, configs, and updates stay in sync automatically.</span>
-        </div>
-        <div class="downloads">
-          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
-            <small>Download for</small>
-            <strong>Windows</strong>
-          </a>
-          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
-            <small>Download for</small>
-            <strong>macOS</strong>
-          </a>
-        </div>
-        <p class="note">One installer. Install once. Updates are handled automatically.</p>
-      </div>
-    </section>
+    <p class="note">Java, mods, configs, and updates are handled automatically.</p>
   </main>
 </body>
 </html>
