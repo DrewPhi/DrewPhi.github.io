@@ -66,14 +66,12 @@
         0
         max(16px, env(safe-area-inset-bottom));
       display: grid;
-      grid-template-rows: auto auto minmax(0, 1fr) auto;
+      grid-template-rows: auto minmax(0, 1fr) auto;
       gap: clamp(12px, 2.2vh, 22px);
       align-content: center;
     }
 
-    .hero {
-      text-align: center;
-    }
+    .hero { text-align: center; }
 
     .tag {
       margin: 0 0 clamp(5px, .9vh, 10px);
@@ -289,7 +287,6 @@
       text-align: center;
     }
 
-    /* Tablet and phones: 2x2 strongest feature set. */
     @media (max-width: 760px) {
       .page {
         width: calc(100% - 20px);
@@ -302,16 +299,10 @@
       }
 
       .feature:nth-child(5),
-      .feature:nth-child(6) {
-        display: none;
-      }
-
-      .download-heading span {
-        display: none;
-      }
+      .feature:nth-child(6) { display: none; }
+      .download-heading span { display: none; }
     }
 
-    /* Phones: compact cards, but buttons remain side-by-side. */
     @media (max-width: 520px) {
       .page {
         width: calc(100% - 16px);
@@ -319,18 +310,9 @@
         padding-bottom: max(10px, env(safe-area-inset-bottom));
       }
 
-      .tag {
-        font-size: 8px;
-        margin-bottom: 3px;
-      }
-
-      .wordmark {
-        min-height: 54px;
-      }
-
-      h1 {
-        font-size: clamp(46px, min(17vw, 12vh), 68px);
-      }
+      .tag { font-size: 8px; margin-bottom: 3px; }
+      .wordmark { min-height: 54px; }
+      h1 { font-size: clamp(46px, min(17vw, 12vh), 68px); }
 
       .lede {
         max-width: 30rem;
@@ -340,18 +322,9 @@
         line-height: 1.35;
       }
 
-      .feature {
-        padding: 8px 9px;
-      }
-
-      .feature-number {
-        display: none;
-      }
-
-      .feature strong {
-        margin: 0;
-        font-size: clamp(10px, 3vw, 12px);
-      }
+      .feature { padding: 8px 9px; }
+      .feature-number { display: none; }
+      .feature strong { margin: 0; font-size: clamp(10px, 3vw, 12px); }
 
       .feature .detail {
         margin-top: 3px;
@@ -359,103 +332,41 @@
         line-height: 1.28;
       }
 
-      .download-shell {
-        padding: 7px;
-      }
-
-      .download-heading {
-        margin: 0 2px 6px;
-      }
-
-      .download-heading strong {
-        font-size: 9px;
-      }
+      .download-shell { padding: 7px; }
+      .download-heading { margin: 0 2px 6px; }
+      .download-heading strong { font-size: 9px; }
 
       .download {
         min-height: clamp(62px, 9vh, 76px);
         padding: 9px 8px;
       }
 
-      .download::after {
-        top: 6px;
-        right: 7px;
-        font-size: 10px;
-      }
-
-      .download small {
-        margin-bottom: 3px;
-        font-size: 6px;
-        letter-spacing: .1em;
-      }
-
-      .download strong {
-        font-size: clamp(13px, 4.6vw, 18px);
-      }
-
-      .note {
-        margin-top: 5px;
-        font-size: 7px;
-      }
+      .download::after { top: 6px; right: 7px; font-size: 10px; }
+      .download small { margin-bottom: 3px; font-size: 6px; letter-spacing: .1em; }
+      .download strong { font-size: clamp(13px, 4.6vw, 18px); }
+      .note { margin-top: 5px; font-size: 7px; }
     }
 
-    /* Short screens: preserve title + downloads, remove secondary copy first. */
     @media (max-height: 720px) {
-      .page {
-        gap: 9px;
-      }
-
-      .tag {
-        margin-bottom: 2px;
-      }
-
-      .lede {
-        margin-top: 4px;
-        line-height: 1.32;
-      }
-
-      .feature-number {
-        display: none;
-      }
-
-      .feature .detail {
-        display: none;
-      }
-
-      .feature {
-        padding-top: 8px;
-        padding-bottom: 8px;
-      }
-
-      .feature strong {
-        margin: 0;
-      }
-
-      .download-heading span,
-      .note {
-        display: none;
-      }
+      .page { gap: 9px; }
+      .tag { margin-bottom: 2px; }
+      .lede { margin-top: 4px; line-height: 1.32; }
+      .feature-number, .feature .detail, .download-heading span, .note { display: none; }
+      .feature { padding-top: 8px; padding-bottom: 8px; }
+      .feature strong { margin: 0; }
     }
 
-    /* Very short / landscape phones: one compact feature row. */
     @media (max-height: 560px) {
       .page {
-        grid-template-rows: auto auto auto;
+        grid-template-rows: auto minmax(0, 1fr) auto;
         gap: 7px;
         padding-top: max(6px, env(safe-area-inset-top));
         padding-bottom: max(6px, env(safe-area-inset-bottom));
       }
 
-      .tag {
-        display: none;
-      }
-
-      .wordmark {
-        min-height: 44px;
-      }
-
-      h1 {
-        font-size: clamp(38px, min(10vw, 13vh), 62px);
-      }
+      .tag { display: none; }
+      .wordmark { min-height: 44px; }
+      h1 { font-size: clamp(38px, min(10vw, 13vh), 62px); }
 
       .lede {
         font-size: clamp(9px, 1.6vw, 11px);
@@ -470,9 +381,7 @@
         gap: 6px;
       }
 
-      .feature:nth-child(n+5) {
-        display: none;
-      }
+      .feature:nth-child(n+5) { display: none; }
 
       .feature {
         min-height: 42px;
@@ -485,38 +394,24 @@
         text-align: center;
       }
 
-      .download-shell {
-        padding: 6px;
-      }
-
-      .download-heading {
-        display: none;
-      }
+      .download-shell { padding: 6px; }
+      .download-heading { display: none; }
 
       .download {
         min-height: clamp(48px, 15vh, 64px);
         padding: 7px 9px;
       }
 
-      .download small {
-        display: none;
-      }
-
-      .download strong {
-        font-size: clamp(13px, 2.6vw, 18px);
-      }
+      .download small { display: none; }
+      .download strong { font-size: clamp(13px, 2.6vw, 18px); }
     }
 
-    /* Tiny phones: only two strongest highlights. */
     @media (max-width: 380px) and (min-height: 561px) {
       .features {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-rows: 1fr;
       }
-
-      .feature:nth-child(n+3) {
-        display: none;
-      }
+      .feature:nth-child(n+3) { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -529,47 +424,21 @@
   <main class="page">
     <section class="hero" aria-labelledby="drewcraft-title">
       <p class="tag">Private modded Minecraft</p>
-
       <div class="wordmark">
         <h1 id="drewcraft-title" aria-label="DrewCraft">
           <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
         </h1>
       </div>
-
       <p class="lede">DrewCraft is a large-scale survival world where weather, distance, machines, vehicles, and roaming threats turn exploration and infrastructure into the game.</p>
     </section>
 
     <ul class="features" aria-label="DrewCraft highlights">
-      <li class="feature">
-        <span class="feature-number">01 / WORLD</span>
-        <strong>Huge world, real journeys</strong>
-        <span class="detail">Distant cities, wilderness, roads, railways, and reasons to actually travel.</span>
-      </li>
-      <li class="feature">
-        <span class="feature-number">02 / WEATHER</span>
-        <strong>Living weather</strong>
-        <span class="detail">Wind, moving storms, dramatic skies, and weather you can see coming.</span>
-      </li>
-      <li class="feature">
-        <span class="feature-number">03 / FLIGHT</span>
-        <strong>Planes, vehicles, and radar</strong>
-        <span class="detail">Cross the world by air and build infrastructure that makes distance manageable.</span>
-      </li>
-      <li class="feature">
-        <span class="feature-number">04 / ENGINEERING</span>
-        <strong>Engineering that matters</strong>
-        <span class="detail">Factories, rail systems, machines, and large-scale builds with purpose.</span>
-      </li>
-      <li class="feature">
-        <span class="feature-number">05 / SURVIVAL</span>
-        <strong>Armies on the horizon</strong>
-        <span class="detail">Hostile forces make walls, weapons, and defenses worth building.</span>
-      </li>
-      <li class="feature">
-        <span class="feature-number">06 / EXPLORATION</span>
-        <strong>A world worth changing</strong>
-        <span class="detail">Destroy threats at their source and slowly turn wilderness into home.</span>
-      </li>
+      <li class="feature"><span class="feature-number">01 / WORLD</span><strong>Huge world, real journeys</strong><span class="detail">Distant cities, wilderness, roads, railways, and reasons to actually travel.</span></li>
+      <li class="feature"><span class="feature-number">02 / WEATHER</span><strong>Living weather</strong><span class="detail">Wind, moving storms, dramatic skies, and weather you can see coming.</span></li>
+      <li class="feature"><span class="feature-number">03 / FLIGHT</span><strong>Planes, vehicles, and radar</strong><span class="detail">Cross the world by air and build infrastructure that makes distance manageable.</span></li>
+      <li class="feature"><span class="feature-number">04 / ENGINEERING</span><strong>Engineering that matters</strong><span class="detail">Factories, rail systems, machines, and large-scale builds with purpose.</span></li>
+      <li class="feature"><span class="feature-number">05 / SURVIVAL</span><strong>Armies on the horizon</strong><span class="detail">Hostile forces make walls, weapons, and defenses worth building.</span></li>
+      <li class="feature"><span class="feature-number">06 / EXPLORATION</span><strong>A world worth changing</strong><span class="detail">Destroy threats at their source and slowly turn wilderness into home.</span></li>
     </ul>
 
     <section class="download-shell" aria-label="Download DrewCraft">
@@ -577,19 +446,10 @@
         <strong>Pick your computer. Everything else is handled.</strong>
         <span>Java, mods, configs, and updates stay in sync automatically.</span>
       </div>
-
       <div class="downloads">
-        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
-          <small>Download for</small>
-          <strong>Windows</strong>
-        </a>
-
-        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
-          <small>Download for</small>
-          <strong>macOS</strong>
-        </a>
+        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe"><small>Download for</small><strong>Windows</strong></a>
+        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg"><small>Download for</small><strong>macOS</strong></a>
       </div>
-
       <p class="note">One installer. Install once. Updates are handled automatically.</p>
     </section>
   </main>
