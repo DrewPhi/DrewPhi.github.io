@@ -11,11 +11,10 @@
     :root {
       --bg: #222624;
       --bg-deep: #171a18;
-      --ink: #f8f8f2;
-      --muted: #aeb5ad;
+      --ink: #ffffff;
+      --muted: #b9c0b9;
       --yellow: #faff75;
       --yellow-soft: #f9fbb1;
-      --spin-duration: 2.6s;
     }
 
     * { box-sizing: border-box; }
@@ -29,128 +28,74 @@
 
     body {
       min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
       color: var(--ink);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      overflow-x: hidden;
       background:
-        radial-gradient(circle at 50% 36%, rgba(250,255,117,.09), transparent 32rem),
+        radial-gradient(circle at 50% 38%, rgba(250,255,117,.08), transparent 34rem),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
     }
 
-    .wrap {
-      min-height: 100vh;
+    main {
       width: min(900px, calc(100% - 28px));
-      margin: 0 auto;
-      padding: 56px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 64px 0;
       text-align: center;
     }
 
-    .kicker {
-      margin: 0 0 18px;
+    .tag {
+      margin: 0 0 22px;
       color: var(--yellow-soft);
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: .15em;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
-    .title {
+    h1 {
       margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
       gap: .04em;
-      font-size: clamp(58px, 12vw, 128px);
-      line-height: .84;
+      font-size: clamp(64px, 13vw, 136px);
+      line-height: .9;
       letter-spacing: -.08em;
       font-weight: 950;
       color: white;
     }
 
-    .prop-unit {
-      position: relative;
-      display: inline-grid;
-      place-items: center;
-      width: 4.25ch;
-      height: 1.06em;
-      margin-right: .02em;
-      isolation: isolate;
-    }
-
-    /* simple cockpit / engine-cowling silhouette */
-    .prop-unit::before {
-      content: "";
-      position: absolute;
-      inset: 12% -3% 12% -3%;
-      border: 2px solid rgba(250,255,117,.32);
-      border-radius: 999px 42% 42% 999px / 65% 50% 50% 65%;
-      background: rgba(34,38,36,.2);
-      box-shadow: 0 0 20px rgba(250,255,117,.06);
-      z-index: 0;
-    }
-
-    .prop-unit::after {
-      content: "";
-      position: absolute;
-      left: 16%;
-      top: 24%;
-      width: 23%;
-      height: 25%;
-      border-top: 2px solid rgba(250,255,117,.4);
-      border-left: 2px solid rgba(250,255,117,.4);
-      border-radius: 12px 0 0 0;
-      z-index: 0;
-    }
-
-    .hub {
-      position: absolute;
-      width: .14em;
-      height: .14em;
-      border-radius: 50%;
-      background: var(--yellow);
-      box-shadow: 0 0 11px rgba(250,255,117,.72);
-      z-index: 3;
-    }
-
-    .propeller {
-      position: relative;
-      z-index: 2;
+    .drew {
       display: inline-block;
       color: var(--yellow);
-      transform-origin: 50% 50%;
-      animation: sputterSpin var(--spin-duration) infinite;
+      transform-origin: 50% 52%;
+      animation: sputter-spin 3.6s infinite;
       will-change: transform;
-      text-shadow: 0 0 24px rgba(250,255,117,.12);
+      text-shadow: 0 0 26px rgba(250,255,117,.13);
     }
 
-    .craft { display: inline-block; }
-
-    @keyframes sputterSpin {
+    @keyframes sputter-spin {
       0%   { transform: rotate(0deg); }
-      8%   { transform: rotate(300deg); }
-      13%  { transform: rotate(325deg); }
-      18%  { transform: rotate(350deg); }
-      30%  { transform: rotate(860deg); }
-      35%  { transform: rotate(890deg); }
-      40%  { transform: rotate(910deg); }
-      55%  { transform: rotate(1490deg); }
-      60%  { transform: rotate(1520deg); }
-      66%  { transform: rotate(1540deg); }
-      82%  { transform: rotate(2190deg); }
-      88%  { transform: rotate(2230deg); }
-      100% { transform: rotate(2880deg); }
+      10%  { transform: rotate(185deg); }
+      13%  { transform: rotate(192deg); }
+      22%  { transform: rotate(420deg); }
+      27%  { transform: rotate(486deg); }
+      31%  { transform: rotate(493deg); }
+      46%  { transform: rotate(850deg); }
+      50%  { transform: rotate(858deg); }
+      68%  { transform: rotate(1265deg); }
+      73%  { transform: rotate(1280deg); }
+      77%  { transform: rotate(1287deg); }
+      100% { transform: rotate(1800deg); }
     }
 
     .lede {
-      max-width: 630px;
-      margin: 26px auto 0;
-      color: #dfe4df;
+      max-width: 680px;
+      margin: 34px auto 0;
+      color: var(--muted);
       font-size: clamp(15px, 2vw, 19px);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .downloads {
@@ -158,13 +103,13 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       width: min(680px, 100%);
-      margin: 34px auto 0;
+      margin: 38px auto 0;
     }
 
     .download {
       min-width: 0;
       min-height: 104px;
-      padding: 18px;
+      padding: 20px 18px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -201,70 +146,39 @@
       letter-spacing: -.035em;
     }
 
-    .meta {
-      margin-top: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .sound-toggle {
-      appearance: none;
-      border: 1px solid rgba(250,255,117,.35);
-      background: rgba(250,255,117,.07);
-      color: var(--yellow-soft);
-      padding: 8px 11px;
-      font: inherit;
+    .note {
+      margin: 22px 0 0;
+      color: rgba(255,255,255,.43);
       font-size: 11px;
-      font-weight: 750;
-      cursor: pointer;
-      transition: background .14s ease, transform .14s ease;
-    }
-
-    .sound-toggle:hover,
-    .sound-toggle:focus-visible {
-      background: rgba(250,255,117,.14);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .tiny {
-      color: rgba(255,255,255,.42);
-      font-size: 10px;
+      line-height: 1.5;
     }
 
     @media (max-width: 520px) {
-      .wrap { padding: 42px 0; }
-      .kicker { font-size: 10px; }
-      .title { font-size: clamp(50px, 18vw, 78px); }
-      .lede { font-size: 14px; margin-top: 22px; }
-      .downloads { gap: 9px; margin-top: 28px; }
-      .download { min-height: 88px; padding: 13px 10px; }
+      main { padding: 44px 0; }
+      .tag { margin-bottom: 18px; font-size: 10px; }
+      h1 { font-size: clamp(54px, 18vw, 78px); }
+      .lede { margin-top: 26px; font-size: 14px; }
+      .downloads { gap: 9px; margin-top: 30px; }
+      .download { min-height: 88px; padding: 14px 11px; }
       .download small { font-size: 7px; letter-spacing: .1em; }
       .download strong { font-size: clamp(14px, 4.5vw, 19px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .propeller { animation: none; }
+      .drew { animation: none; }
       .download { transition: none; }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <p class="kicker">Private modded Minecraft</p>
+  <main>
+    <p class="tag">Private modded Minecraft</p>
 
-    <h1 class="title" aria-label="DrewCraft">
-      <span class="prop-unit" aria-hidden="true">
-        <span class="hub"></span>
-        <span class="propeller">Drew</span>
-      </span>
-      <span class="craft">Craft</span>
+    <h1 aria-label="DrewCraft">
+      <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
     </h1>
 
-    <p class="lede">One installer. No mod juggling, Java setup, or version matching. Download DrewCraft and launch the world.</p>
+    <p class="lede">DrewCraft is a private modded Minecraft world built to make distance feel meaningful again—storms moving across the horizon, roads and railways worth building, aircraft worth flying, cities worth discovering, and machines that slowly turn wilderness into home. It keeps Minecraft familiar, but gives the world enough scale, weather, engineering, and danger that getting somewhere matters almost as much as what you find there.</p>
 
     <section class="downloads" aria-label="Download DrewCraft">
       <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
@@ -278,141 +192,7 @@
       </a>
     </section>
 
-    <div class="meta">
-      <button class="sound-toggle" id="soundToggle" type="button">Enable prop sound</button>
-      <span class="tiny">Sound starts after a click or tap.</span>
-    </div>
+    <p class="note">One installer. Install once. Updates are handled automatically.</p>
   </main>
-
-  <script>
-    const soundToggle = document.getElementById('soundToggle');
-    const cycleMs = 2600;
-    const burstPattern = [
-      { at: 0,    intensity: 1.00 },
-      { at: 240,  intensity: 0.55 },
-      { at: 720,  intensity: 0.95 },
-      { at: 1080, intensity: 0.50 },
-      { at: 1500, intensity: 1.00 },
-      { at: 1880, intensity: 0.62 },
-      { at: 2220, intensity: 0.82 }
-    ];
-
-    let audioCtx = null;
-    let masterGain = null;
-    let noiseBuffer = null;
-    let engineOn = false;
-    let rafId = null;
-    let cycleIndex = -1;
-    let fired = {};
-
-    function makeNoiseBuffer(ctx) {
-      const buffer = ctx.createBuffer(1, ctx.sampleRate * 0.18, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < data.length; i++) {
-        data[i] = (Math.random() * 2 - 1) * 0.35;
-      }
-      return buffer;
-    }
-
-    function initAudio() {
-      if (audioCtx) return;
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.value = 0.14;
-      masterGain.connect(audioCtx.destination);
-      noiseBuffer = makeNoiseBuffer(audioCtx);
-    }
-
-    function engineBurst(intensity = 1) {
-      if (!audioCtx || !masterGain) return;
-      const t = audioCtx.currentTime;
-
-      const osc = audioCtx.createOscillator();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(52 + Math.random() * 16, t);
-      osc.frequency.linearRampToValueAtTime(78 + Math.random() * 28, t + 0.05);
-
-      const filter = audioCtx.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.value = 180 + Math.random() * 90;
-      filter.Q.value = 0.8;
-
-      const gain = audioCtx.createGain();
-      gain.gain.setValueAtTime(0.0001, t);
-      gain.gain.linearRampToValueAtTime(0.075 * intensity, t + 0.012);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.15);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(masterGain);
-      osc.start(t);
-      osc.stop(t + 0.18);
-
-      const noise = audioCtx.createBufferSource();
-      noise.buffer = noiseBuffer;
-
-      const noiseFilter = audioCtx.createBiquadFilter();
-      noiseFilter.type = 'highpass';
-      noiseFilter.frequency.value = 500;
-
-      const noiseGain = audioCtx.createGain();
-      noiseGain.gain.setValueAtTime(0.0001, t);
-      noiseGain.gain.linearRampToValueAtTime(0.022 * intensity, t + 0.004);
-      noiseGain.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
-
-      noise.connect(noiseFilter);
-      noiseFilter.connect(noiseGain);
-      noiseGain.connect(masterGain);
-      noise.start(t);
-      noise.stop(t + 0.08);
-    }
-
-    function tick(now) {
-      if (!engineOn) return;
-      const currentCycle = Math.floor(now / cycleMs);
-      const within = now % cycleMs;
-
-      if (currentCycle !== cycleIndex) {
-        cycleIndex = currentCycle;
-        fired = {};
-      }
-
-      burstPattern.forEach((p, i) => {
-        if (!fired[i] && within >= p.at) {
-          engineBurst(p.intensity);
-          fired[i] = true;
-        }
-      });
-
-      rafId = requestAnimationFrame(tick);
-    }
-
-    async function setEngine(state) {
-      initAudio();
-      if (audioCtx.state === 'suspended') await audioCtx.resume();
-
-      engineOn = state;
-      soundToggle.textContent = engineOn ? 'Mute prop sound' : 'Enable prop sound';
-
-      if (engineOn && !rafId) {
-        cycleIndex = -1;
-        fired = {};
-        rafId = requestAnimationFrame(tick);
-      }
-
-      if (!engineOn && rafId) {
-        cancelAnimationFrame(rafId);
-        rafId = null;
-      }
-    }
-
-    soundToggle.addEventListener('click', async () => {
-      await setEngine(!engineOn);
-    });
-
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden && engineOn) setEngine(false);
-    });
-  </script>
 </body>
 </html>
