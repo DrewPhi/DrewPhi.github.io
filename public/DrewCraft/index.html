@@ -11,12 +11,12 @@
     :root {
       --bg: #222624;
       --bg-deep: #171a18;
-      --surface: rgba(255,255,255,.04);
+      --surface: rgba(255,255,255,.045);
       --ink: #fff;
       --muted: #aeb6af;
       --yellow: #faff75;
       --yellow-soft: #f9fbb1;
-      --line: rgba(250,255,117,.16);
+      --line: rgba(250,255,117,.18);
       --line-soft: rgba(255,255,255,.08);
     }
 
@@ -36,9 +36,9 @@
       color: var(--ink);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       background:
-        radial-gradient(circle at 50% 0%, rgba(250,255,117,.10), transparent 31rem),
-        radial-gradient(circle at 7% 80%, rgba(250,255,117,.035), transparent 24rem),
-        linear-gradient(180deg, #242925 0%, var(--bg-deep) 80%);
+        radial-gradient(circle at 50% 0%, rgba(250,255,117,.11), transparent 31rem),
+        radial-gradient(circle at 9% 82%, rgba(250,255,117,.035), transparent 24rem),
+        linear-gradient(180deg, #242925 0%, var(--bg-deep) 82%);
     }
 
     body::before {
@@ -50,7 +50,7 @@
         linear-gradient(rgba(250,255,117,.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(250,255,117,.02) 1px, transparent 1px);
       background-size: 52px 52px;
-      mask-image: linear-gradient(to bottom, black, transparent 88%);
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
       opacity: .72;
     }
 
@@ -59,31 +59,44 @@
       z-index: 1;
       width: min(1040px, calc(100% - 32px));
       height: 100vh;
-      height: 100svh;
+      height: 100dvh;
       margin: 0 auto;
       padding:
-        max(18px, env(safe-area-inset-top))
+        max(10px, env(safe-area-inset-top))
         0
-        max(16px, env(safe-area-inset-bottom));
+        max(10px, env(safe-area-inset-bottom));
       display: grid;
-      grid-template-rows: auto minmax(0, 1fr) auto;
-      gap: clamp(12px, 2.2vh, 22px);
-      align-content: center;
+      grid-template-rows:
+        minmax(0, .95fr)
+        minmax(0, 1.35fr)
+        minmax(0, .70fr);
+      row-gap: clamp(8px, 1.3vh, 14px);
     }
 
-    .hero { text-align: center; }
+    .hero-band,
+    .features-band,
+    .download-band {
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero {
+      width: 100%;
+      text-align: center;
+    }
 
     .tag {
-      margin: 0 0 clamp(5px, .9vh, 10px);
+      margin: 0 0 clamp(3px, .55vh, 7px);
       color: var(--yellow-soft);
-      font-size: clamp(8px, 1.05vw, 11px);
+      font-size: clamp(8px, .95vw, 11px);
       font-weight: 900;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
 
     .wordmark {
-      min-height: clamp(58px, 11vh, 126px);
       display: grid;
       place-items: center;
     }
@@ -94,13 +107,13 @@
       align-items: center;
       justify-content: center;
       gap: .035em;
-      font-size: clamp(54px, min(11vw, 15vh), 132px);
+      font-size: clamp(50px, min(11vw, 13vh), 126px);
       line-height: .82;
       letter-spacing: -.085em;
       font-weight: 950;
       color: white;
-      text-shadow: 0 18px 42px rgba(0,0,0,.24);
       white-space: nowrap;
+      text-shadow: 0 18px 42px rgba(0,0,0,.24);
     }
 
     .drew {
@@ -129,21 +142,22 @@
 
     .lede {
       max-width: 760px;
-      margin: clamp(8px, 1.4vh, 16px) auto 0;
+      margin: clamp(7px, 1.1vh, 13px) auto 0;
       color: #d8ded9;
-      font-size: clamp(12px, min(1.45vw, 2vh), 17px);
-      line-height: 1.5;
+      font-size: clamp(11px, min(1.35vw, 1.8vh), 16px);
+      line-height: 1.45;
       text-wrap: balance;
     }
 
     .features {
-      min-height: 0;
+      width: 100%;
+      height: 100%;
       margin: 0;
       padding: 0;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: clamp(7px, 1.2vw, 12px);
+      gap: clamp(7px, 1vw, 11px);
       list-style: none;
     }
 
@@ -151,12 +165,11 @@
       position: relative;
       min-width: 0;
       min-height: 0;
-      padding: clamp(10px, 1.6vh, 18px) clamp(11px, 1.5vw, 18px);
+      padding: clamp(9px, 1.3vh, 15px) clamp(10px, 1.25vw, 16px);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      text-align: left;
-      background: linear-gradient(180deg, rgba(255,255,255,.055), var(--surface));
+      background: linear-gradient(180deg, rgba(255,255,255,.06), var(--surface));
       border: 1px solid var(--line-soft);
       overflow: hidden;
     }
@@ -166,36 +179,35 @@
       position: absolute;
       inset: auto 0 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--yellow), transparent 75%);
+      background: linear-gradient(90deg, var(--yellow), transparent 76%);
       opacity: .42;
     }
 
     .feature-number {
-      display: block;
-      margin-bottom: clamp(4px, .65vh, 8px);
+      margin-bottom: clamp(3px, .45vh, 6px);
       color: rgba(250,255,117,.50);
-      font-size: clamp(7px, .75vw, 9px);
+      font-size: clamp(7px, .7vw, 9px);
       font-weight: 900;
       letter-spacing: .12em;
     }
 
     .feature strong {
-      display: block;
-      margin-bottom: clamp(3px, .45vh, 6px);
+      margin-bottom: clamp(2px, .35vh, 5px);
       color: var(--yellow-soft);
-      font-size: clamp(11px, 1.15vw, 14px);
+      font-size: clamp(10px, 1.08vw, 13px);
       line-height: 1.18;
     }
 
     .feature .detail {
       color: var(--muted);
-      font-size: clamp(9px, .92vw, 11px);
-      line-height: 1.4;
+      font-size: clamp(8px, .86vw, 10.5px);
+      line-height: 1.34;
     }
 
     .download-shell {
-      padding: clamp(9px, 1.5vh, 16px);
-      background: rgba(18,21,19,.52);
+      width: 100%;
+      padding: clamp(8px, 1.15vh, 13px);
+      background: rgba(18,21,19,.54);
       border: 1px solid var(--line);
       box-shadow: 0 18px 46px rgba(0,0,0,.24);
     }
@@ -205,33 +217,33 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin: 0 2px clamp(7px, 1vh, 11px);
+      margin: 0 2px clamp(6px, .85vh, 9px);
       text-align: left;
     }
 
     .download-heading strong {
       color: white;
-      font-size: clamp(10px, 1vw, 13px);
+      font-size: clamp(9px, .95vw, 12px);
     }
 
     .download-heading span {
       color: var(--muted);
-      font-size: clamp(8px, .78vw, 10px);
-      line-height: 1.3;
+      font-size: clamp(7px, .72vw, 9px);
+      line-height: 1.25;
       text-align: right;
     }
 
     .downloads {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: clamp(7px, 1vw, 10px);
+      gap: clamp(7px, .9vw, 10px);
     }
 
     .download {
       position: relative;
       min-width: 0;
-      min-height: clamp(70px, 10vh, 94px);
-      padding: clamp(10px, 1.5vh, 15px) clamp(10px, 1.4vw, 16px);
+      min-height: clamp(58px, 7.8vh, 82px);
+      padding: clamp(8px, 1.15vh, 13px) clamp(9px, 1.15vw, 14px);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -248,9 +260,9 @@
     .download::after {
       content: "↘";
       position: absolute;
-      top: 9px;
-      right: 11px;
-      font-size: 13px;
+      top: 8px;
+      right: 10px;
+      font-size: 12px;
       font-weight: 900;
       opacity: .34;
     }
@@ -265,32 +277,35 @@
     }
 
     .download small {
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       color: rgba(23,26,24,.58);
-      font-size: clamp(7px, .72vw, 9px);
+      font-size: clamp(6px, .67vw, 8px);
       font-weight: 900;
       letter-spacing: .13em;
       text-transform: uppercase;
     }
 
     .download strong {
-      font-size: clamp(16px, min(2.4vw, 3.2vh), 26px);
+      font-size: clamp(15px, min(2.25vw, 2.9vh), 24px);
       line-height: 1;
       letter-spacing: -.035em;
     }
 
     .note {
-      margin: clamp(6px, .8vh, 10px) 0 0;
+      margin: clamp(4px, .55vh, 7px) 0 0;
       color: rgba(255,255,255,.42);
-      font-size: clamp(8px, .72vw, 9px);
-      line-height: 1.25;
+      font-size: clamp(7px, .65vw, 8px);
+      line-height: 1.2;
       text-align: center;
     }
 
     @media (max-width: 760px) {
       .page {
         width: calc(100% - 20px);
-        gap: clamp(9px, 1.8vh, 16px);
+        grid-template-rows:
+          minmax(0, .90fr)
+          minmax(0, 1.45fr)
+          minmax(0, .65fr);
       }
 
       .features {
@@ -305,71 +320,81 @@
 
     @media (max-width: 520px) {
       .page {
-        width: calc(100% - 16px);
-        padding-top: max(10px, env(safe-area-inset-top));
-        padding-bottom: max(10px, env(safe-area-inset-bottom));
+        width: calc(100% - 14px);
+        grid-template-rows:
+          minmax(0, .92fr)
+          minmax(0, 1.42fr)
+          minmax(0, .66fr);
+        row-gap: 7px;
+        padding-top: max(7px, env(safe-area-inset-top));
+        padding-bottom: max(7px, env(safe-area-inset-bottom));
       }
 
-      .tag { font-size: 8px; margin-bottom: 3px; }
-      .wordmark { min-height: 54px; }
-      h1 { font-size: clamp(46px, min(17vw, 12vh), 68px); }
+      .tag { margin-bottom: 2px; font-size: 7px; }
+      h1 { font-size: clamp(42px, min(17vw, 10.8vh), 66px); }
 
       .lede {
         max-width: 30rem;
-        margin-top: 6px;
-        padding: 0 5px;
-        font-size: clamp(10px, 3vw, 12px);
-        line-height: 1.35;
-      }
-
-      .feature { padding: 8px 9px; }
-      .feature-number { display: none; }
-      .feature strong { margin: 0; font-size: clamp(10px, 3vw, 12px); }
-
-      .feature .detail {
-        margin-top: 3px;
-        font-size: clamp(8px, 2.45vw, 10px);
+        margin-top: 5px;
+        padding: 0 4px;
+        font-size: clamp(9px, 2.8vw, 11px);
         line-height: 1.28;
       }
 
-      .download-shell { padding: 7px; }
-      .download-heading { margin: 0 2px 6px; }
-      .download-heading strong { font-size: 9px; }
-
-      .download {
-        min-height: clamp(62px, 9vh, 76px);
-        padding: 9px 8px;
+      .feature {
+        padding: 7px 8px;
       }
 
-      .download::after { top: 6px; right: 7px; font-size: 10px; }
-      .download small { margin-bottom: 3px; font-size: 6px; letter-spacing: .1em; }
-      .download strong { font-size: clamp(13px, 4.6vw, 18px); }
-      .note { margin-top: 5px; font-size: 7px; }
+      .feature-number { display: none; }
+      .feature strong { margin: 0; font-size: clamp(9px, 2.9vw, 11px); }
+      .feature .detail {
+        margin-top: 2px;
+        font-size: clamp(7px, 2.25vw, 9px);
+        line-height: 1.22;
+      }
+
+      .download-shell { padding: 6px; }
+      .download-heading { margin: 0 2px 5px; }
+      .download-heading strong { font-size: 8px; }
+
+      .download {
+        min-height: clamp(50px, 7vh, 64px);
+        padding: 7px;
+      }
+
+      .download::after { top: 5px; right: 6px; font-size: 9px; }
+      .download small { margin-bottom: 2px; font-size: 5.5px; letter-spacing: .1em; }
+      .download strong { font-size: clamp(12px, 4.4vw, 17px); }
+      .note { margin-top: 4px; font-size: 6.5px; }
     }
 
-    @media (max-height: 720px) {
-      .page { gap: 9px; }
-      .tag { margin-bottom: 2px; }
-      .lede { margin-top: 4px; line-height: 1.32; }
-      .feature-number, .feature .detail, .download-heading span, .note { display: none; }
-      .feature { padding-top: 8px; padding-bottom: 8px; }
-      .feature strong { margin: 0; }
+    @media (max-height: 700px) {
+      .page {
+        grid-template-rows:
+          minmax(0, .86fr)
+          minmax(0, 1.50fr)
+          minmax(0, .64fr);
+        row-gap: 6px;
+      }
+
+      .feature-number,
+      .feature .detail,
+      .download-heading span,
+      .note { display: none; }
+
+      .feature strong {
+        margin: 0;
+        text-align: center;
+      }
     }
 
     @media (max-height: 560px) {
-      .page {
-        grid-template-rows: auto minmax(0, 1fr) auto;
-        gap: 7px;
-        padding-top: max(6px, env(safe-area-inset-top));
-        padding-bottom: max(6px, env(safe-area-inset-bottom));
-      }
-
-      .tag { display: none; }
-      .wordmark { min-height: 44px; }
-      h1 { font-size: clamp(38px, min(10vw, 13vh), 62px); }
+      .tag,
+      .download-heading { display: none; }
 
       .lede {
-        font-size: clamp(9px, 1.6vw, 11px);
+        margin-top: 3px;
+        font-size: clamp(8px, 1.45vw, 10px);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -378,32 +403,16 @@
       .features {
         grid-template-columns: repeat(4, minmax(0, 1fr));
         grid-template-rows: 1fr;
-        gap: 6px;
       }
 
       .feature:nth-child(n+5) { display: none; }
+      .feature { padding: 5px 6px; }
+      .feature strong { font-size: clamp(7.5px, 1.35vw, 9.5px); }
 
-      .feature {
-        min-height: 42px;
-        padding: 6px 7px;
-        justify-content: center;
-      }
-
-      .feature strong {
-        font-size: clamp(8px, 1.45vw, 10px);
-        text-align: center;
-      }
-
-      .download-shell { padding: 6px; }
-      .download-heading { display: none; }
-
-      .download {
-        min-height: clamp(48px, 15vh, 64px);
-        padding: 7px 9px;
-      }
-
+      .download-shell { padding: 5px; }
+      .download { min-height: clamp(42px, 10vh, 54px); }
       .download small { display: none; }
-      .download strong { font-size: clamp(13px, 2.6vw, 18px); }
+      .download strong { font-size: clamp(12px, 2.4vw, 17px); }
     }
 
     @media (max-width: 380px) and (min-height: 561px) {
@@ -422,35 +431,71 @@
 </head>
 <body>
   <main class="page">
-    <section class="hero" aria-labelledby="drewcraft-title">
-      <p class="tag">Private modded Minecraft</p>
-      <div class="wordmark">
-        <h1 id="drewcraft-title" aria-label="DrewCraft">
-          <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
-        </h1>
+    <section class="hero-band">
+      <div class="hero" aria-labelledby="drewcraft-title">
+        <p class="tag">Private modded Minecraft</p>
+        <div class="wordmark">
+          <h1 id="drewcraft-title" aria-label="DrewCraft">
+            <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
+          </h1>
+        </div>
+        <p class="lede">DrewCraft is a large-scale survival world where weather, distance, machines, vehicles, and roaming threats turn exploration and infrastructure into the game.</p>
       </div>
-      <p class="lede">DrewCraft is a large-scale survival world where weather, distance, machines, vehicles, and roaming threats turn exploration and infrastructure into the game.</p>
     </section>
 
-    <ul class="features" aria-label="DrewCraft highlights">
-      <li class="feature"><span class="feature-number">01 / WORLD</span><strong>Huge world, real journeys</strong><span class="detail">Distant cities, wilderness, roads, railways, and reasons to actually travel.</span></li>
-      <li class="feature"><span class="feature-number">02 / WEATHER</span><strong>Living weather</strong><span class="detail">Wind, moving storms, dramatic skies, and weather you can see coming.</span></li>
-      <li class="feature"><span class="feature-number">03 / FLIGHT</span><strong>Planes, vehicles, and radar</strong><span class="detail">Cross the world by air and build infrastructure that makes distance manageable.</span></li>
-      <li class="feature"><span class="feature-number">04 / ENGINEERING</span><strong>Engineering that matters</strong><span class="detail">Factories, rail systems, machines, and large-scale builds with purpose.</span></li>
-      <li class="feature"><span class="feature-number">05 / SURVIVAL</span><strong>Armies on the horizon</strong><span class="detail">Hostile forces make walls, weapons, and defenses worth building.</span></li>
-      <li class="feature"><span class="feature-number">06 / EXPLORATION</span><strong>A world worth changing</strong><span class="detail">Destroy threats at their source and slowly turn wilderness into home.</span></li>
-    </ul>
+    <section class="features-band" aria-label="DrewCraft highlights">
+      <ul class="features">
+        <li class="feature">
+          <span class="feature-number">01 / WORLD</span>
+          <strong>Huge world, real journeys</strong>
+          <span class="detail">Distant cities, wilderness, roads, railways, and reasons to actually travel.</span>
+        </li>
+        <li class="feature">
+          <span class="feature-number">02 / WEATHER</span>
+          <strong>Living weather</strong>
+          <span class="detail">Wind, moving storms, dramatic skies, and weather you can see coming.</span>
+        </li>
+        <li class="feature">
+          <span class="feature-number">03 / FLIGHT</span>
+          <strong>Planes, vehicles, and radar</strong>
+          <span class="detail">Cross the world by air and build infrastructure that makes distance manageable.</span>
+        </li>
+        <li class="feature">
+          <span class="feature-number">04 / ENGINEERING</span>
+          <strong>Engineering that matters</strong>
+          <span class="detail">Create-powered factories, rail systems, machines, and large-scale builds with purpose.</span>
+        </li>
+        <li class="feature">
+          <span class="feature-number">05 / SURVIVAL</span>
+          <strong>Armies on the horizon</strong>
+          <span class="detail">Hostile forces move through the world and make walls, weapons, and defenses worth building.</span>
+        </li>
+        <li class="feature">
+          <span class="feature-number">06 / EXPLORATION</span>
+          <strong>A world worth changing</strong>
+          <span class="detail">Find dangerous places, destroy threats at their source, and turn wilderness into home.</span>
+        </li>
+      </ul>
+    </section>
 
-    <section class="download-shell" aria-label="Download DrewCraft">
-      <div class="download-heading">
-        <strong>Pick your computer. Everything else is handled.</strong>
-        <span>Java, mods, configs, and updates stay in sync automatically.</span>
+    <section class="download-band" aria-label="Download DrewCraft">
+      <div class="download-shell">
+        <div class="download-heading">
+          <strong>Pick your computer. Everything else is handled.</strong>
+          <span>Java, mods, configs, and updates stay in sync automatically.</span>
+        </div>
+        <div class="downloads">
+          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
+            <small>Download for</small>
+            <strong>Windows</strong>
+          </a>
+          <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg">
+            <small>Download for</small>
+            <strong>macOS</strong>
+          </a>
+        </div>
+        <p class="note">One installer. Install once. Updates are handled automatically.</p>
       </div>
-      <div class="downloads">
-        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe"><small>Download for</small><strong>Windows</strong></a>
-        <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-macOS.dmg"><small>Download for</small><strong>macOS</strong></a>
-      </div>
-      <p class="note">One installer. Install once. Updates are handled automatically.</p>
     </section>
   </main>
 </body>
