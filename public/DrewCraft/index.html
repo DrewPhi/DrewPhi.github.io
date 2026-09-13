@@ -91,11 +91,43 @@
     }
 
     .lede {
-      max-width: 680px;
-      margin: 34px auto 0;
+      max-width: 700px;
+      margin: 32px auto 0;
       color: var(--muted);
       font-size: clamp(15px, 2vw, 19px);
-      line-height: 1.7;
+      line-height: 1.65;
+    }
+
+    .features {
+      width: min(700px, 100%);
+      margin: 24px auto 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 11px 24px;
+      list-style: none;
+      text-align: left;
+      color: #e7ebe6;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .features li {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .features li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: .05em;
+      color: var(--yellow);
+      font-size: 10px;
+    }
+
+    .features strong {
+      color: var(--yellow-soft);
     }
 
     .downloads {
@@ -103,7 +135,7 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       width: min(680px, 100%);
-      margin: 38px auto 0;
+      margin: 34px auto 0;
     }
 
     .download {
@@ -153,12 +185,20 @@
       line-height: 1.5;
     }
 
+    @media (max-width: 620px) {
+      .features {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+    }
+
     @media (max-width: 520px) {
       main { padding: 44px 0; }
       .tag { margin-bottom: 18px; font-size: 10px; }
       h1 { font-size: clamp(54px, 18vw, 78px); }
       .lede { margin-top: 26px; font-size: 14px; }
-      .downloads { gap: 9px; margin-top: 30px; }
+      .features { font-size: 12px; margin-top: 20px; }
+      .downloads { gap: 9px; margin-top: 28px; }
       .download { min-height: 88px; padding: 14px 11px; }
       .download small { font-size: 7px; letter-spacing: .1em; }
       .download strong { font-size: clamp(14px, 4.5vw, 19px); }
@@ -178,7 +218,16 @@
       <span class="drew" aria-hidden="true">Drew</span><span>Craft</span>
     </h1>
 
-    <p class="lede">DrewCraft is a private modded Minecraft world built to make distance feel meaningful again—storms moving across the horizon, roads and railways worth building, aircraft worth flying, cities worth discovering, and machines that slowly turn wilderness into home. It keeps Minecraft familiar, but gives the world enough scale, weather, engineering, and danger that getting somewhere matters almost as much as what you find there.</p>
+    <p class="lede">DrewCraft is a large-scale survival world where weather, distance, machines, vehicles, and roaming threats turn exploration and infrastructure into the game.</p>
+
+    <ul class="features" aria-label="DrewCraft highlights">
+      <li><strong>Huge world, real journeys.</strong> Distant cities, wilderness, roads, railways, and reasons to actually travel.</li>
+      <li><strong>Living weather.</strong> Wind, moving storms, dramatic skies, and weather you can see coming.</li>
+      <li><strong>Planes, vehicles, and radar.</strong> Cross the world by air and build infrastructure that makes distance manageable.</li>
+      <li><strong>Engineering that matters.</strong> Create-powered factories, rail systems, machines, and large-scale builds with a purpose.</li>
+      <li><strong>Armies on the horizon.</strong> Hostile forces can emerge from the world, move toward you, and make defenses worth building.</li>
+      <li><strong>A world worth changing.</strong> Explore dangerous places, destroy threats at their source, and slowly turn wilderness into home.</li>
+    </ul>
 
     <section class="downloads" aria-label="Download DrewCraft">
       <a class="download" href="https://github.com/DrewPhi/ServerMc/releases/latest/download/DrewCraft-Windows.exe">
