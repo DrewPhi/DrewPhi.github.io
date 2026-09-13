@@ -1,1 +1,8 @@
-{"channel":"development","manifestSha256":"8f9efd3f120e4839a8b1541198a44fc55767475de36a0508db375065b54f8370","manifestUrl":"https://drewphi.github.io/DrewCraft/dev/releases/0.1.0-dev-local/release-manifest.json","packVersion":"0.1.0-dev-local","protocolVersion":1,"schemaVersion":1}
+{
+  "channel": "development",
+  "manifestSha256": "b799b21449ea8bd9d51a03b84ce61e614b3a14c0ea78eaa645380f2b9a6e31aa",
+  "manifestUrl": "https://drewphi.github.io/DrewCraft/dev/releases/0.1.1-dev-local/release-manifest.json",
+  "packVersion": "0.1.1-dev-local",
+  "protocolVersion": 1,
+  "schemaVersion": 1
+}
