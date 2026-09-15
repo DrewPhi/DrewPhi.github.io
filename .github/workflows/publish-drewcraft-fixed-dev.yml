@@ -1,0 +1,68 @@
+name: Publish DrewCraft fixed dev payload
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-drewcraft-fixed-dev.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Pages branch
+        uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+          path: pages
+          fetch-depth: 0
+
+      - name: Download verified DrewCraft payload
+        env:
+          PAYLOAD_URL: "https://sdmntpreastus2.oaiusercontent.com/files/00000000-0688-81f6-9d62-4fa845978236/raw?se=2026-09-15T03%3A13%3A19Z&sp=r&sv=2026-02-06&sr=b&scid=95ce80fa-e719-5bbb-8962-f10dd4f484be&skoid=77636ecc-ad8d-44df-baa7-163b524a0261&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-09-14T20%3A11%3A32Z&ske=2026-09-15T20%3A11%3A32Z&sks=b&skv=2026-02-06&sig=mwPfv6Z848Eo%2Bg4A9ESf7ta/zFwWHc4Frg2970lVsL8%3D"
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 3 "$PAYLOAD_URL" -o /tmp/drewcraft-fixed.zip
+          mkdir -p /tmp/drewcraft-fixed
+          unzip -q /tmp/drewcraft-fixed.zip -d /tmp/drewcraft-fixed
+
+      - name: Verify payload before publishing
+        run: |
+          python - <<'PY'
+          import collections, hashlib, json, pathlib
+          root = pathlib.Path('/tmp/drewcraft-fixed')
+          manifest_path = root / '0.1.0-dev-local' / 'release-manifest.json'
+          live_path = root / 'live.json'
+          manifest = json.loads(manifest_path.read_text('utf-8'))
+          live = json.loads(live_path.read_text('utf-8'))
+          paths = [entry['path'] for entry in manifest['files']]
+          duplicates = sorted(k for k, v in collections.Counter(paths).items() if v > 1)
+          assert len(paths) == 40, len(paths)
+          assert duplicates == [], duplicates
+          got = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
+          assert got == live['manifestSha256'], (got, live['manifestSha256'])
+          assert live['packVersion'] == '0.1.0-dev-local'
+          print('verified', len(paths), 'managed files; manifest', got)
+          PY
+
+      - name: Publish development channel to gh-pages
+        run: |
+          set -euo pipefail
+          rm -rf pages/DrewCraft/dev/releases/0.1.0-dev-local
+          mkdir -p pages/DrewCraft/dev/releases/0.1.0-dev-local
+          cp -a /tmp/drewcraft-fixed/0.1.0-dev-local/. pages/DrewCraft/dev/releases/0.1.0-dev-local/
+          cp /tmp/drewcraft-fixed/live.json pages/DrewCraft/live.json
+          cp /tmp/drewcraft-fixed/SHA256SUMS pages/DrewCraft/dev/SHA256SUMS
+          cd pages
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add DrewCraft/live.json DrewCraft/dev
+          if git diff --cached --quiet; then
+            echo 'Pages already contains this verified payload.'
+            exit 0
+          fi
+          git commit -m 'Publish fixed DrewCraft development payload'
+          git push origin HEAD:gh-pages
