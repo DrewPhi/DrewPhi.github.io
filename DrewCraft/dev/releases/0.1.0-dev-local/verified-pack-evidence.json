@@ -1,13 +1,13 @@
 {
-  "client_file_count": 29,
-  "dependency_count": 34,
+  "client_file_count": 34,
+  "dependency_count": 38,
   "layouts": {
     "client": {
       "files": [
         {
           "id": "terrain_diffusion_plus",
           "path": "mods/terrain-diffusion-mc-neoforge-1.21.1-2.3.0-cpu.jar",
-          "sha256": "7c98fa86e15651a832028ce759cdfec025845c8309b0fde243600d77ad494926"
+          "sha256": "07a78ad6f92f62b07de81d6701276758e9ab6be9d4cc10e286c40f1062fc3692"
         },
         {
           "id": "distant_horizons",
@@ -140,6 +140,11 @@
           "sha256": "2eacd2bada39bf1d1ef695736646790c619c0e6cdeaf3d7e3cfc9139d26fae02"
         },
         {
+          "id": "cloth_config",
+          "path": "mods/cloth-config-15.0.140-neoforge.jar",
+          "sha256": "65e722e0d98431a07c45f8bdd8d529a217cc8c175fde1740248bd5c1b4f3c0d4"
+        },
+        {
           "id": "moreculling",
           "path": "mods/moreculling-neoforge-1.21.1-1.0.10.jar",
           "sha256": "008068af65deec86382b4fdde61e7f495e54861cc28d5a5b000c32b435213ed3"
@@ -148,10 +153,31 @@
           "id": "architectury",
           "path": "mods/architectury-13.0.11-neoforge.jar",
           "sha256": "9cc92f2c09533fc5482c60f993bd891c655a0e32b637037cdcb7c2b23adedeeb"
+        },
+        {
+          "id": "cristel_lib",
+          "path": "mods/cristellib-neoforge-1.21.1-3.1.7.jar",
+          "sha256": "11e05dbc97bd3fe1790bd6361747240e314c1dbf40b590ea20cc691dc8396c38"
+        },
+        {
+          "id": "towns_and_towers",
+          "path": "mods/t_and_t-fabric-neoforge-1.13.11.jar",
+          "sha256": "270fc0d1c99e54bc15f43d64bdaac60a90cb896efc357af624988e677136440f"
+        },
+        {
+          "id": "when_dungeons_arise",
+          "path": "mods/DungeonsArise-1.21.1-2.1.68-release.jar",
+          "sha256": "7eee1eca7e3b2c6c1bede055934f391ae2e8349ffe33e106f451176d2cfcf0e4"
+        },
+        {
+          "id": "overlay:pack/overlays/source_structures_first_spike",
+          "path": "config/fml.toml",
+          "sha256": "cff54c45cd1aa8f88636d49023af80cb20f3e7a7f9b0e80e3af4bd18a8f5156d"
         }
       ],
       "profiles": [
-        "stage2_base_performance"
+        "stage2_base_performance",
+        "source_structures_first_spike"
       ],
       "schema_version": 1,
       "target": "client"
@@ -161,7 +187,7 @@
         {
           "id": "terrain_diffusion_plus",
           "path": "mods/terrain-diffusion-mc-neoforge-1.21.1-2.3.0-cpu.jar",
-          "sha256": "7c98fa86e15651a832028ce759cdfec025845c8309b0fde243600d77ad494926"
+          "sha256": "07a78ad6f92f62b07de81d6701276758e9ab6be9d4cc10e286c40f1062fc3692"
         },
         {
           "id": "chunky",
@@ -307,17 +333,39 @@
           "id": "architectury",
           "path": "mods/architectury-13.0.11-neoforge.jar",
           "sha256": "9cc92f2c09533fc5482c60f993bd891c655a0e32b637037cdcb7c2b23adedeeb"
+        },
+        {
+          "id": "cristel_lib",
+          "path": "mods/cristellib-neoforge-1.21.1-3.1.7.jar",
+          "sha256": "11e05dbc97bd3fe1790bd6361747240e314c1dbf40b590ea20cc691dc8396c38"
+        },
+        {
+          "id": "towns_and_towers",
+          "path": "mods/t_and_t-fabric-neoforge-1.13.11.jar",
+          "sha256": "270fc0d1c99e54bc15f43d64bdaac60a90cb896efc357af624988e677136440f"
+        },
+        {
+          "id": "when_dungeons_arise",
+          "path": "mods/DungeonsArise-1.21.1-2.1.68-release.jar",
+          "sha256": "7eee1eca7e3b2c6c1bede055934f391ae2e8349ffe33e106f451176d2cfcf0e4"
+        },
+        {
+          "id": "overlay:pack/overlays/source_structures_first_spike",
+          "path": "config/fml.toml",
+          "sha256": "cff54c45cd1aa8f88636d49023af80cb20f3e7a7f9b0e80e3af4bd18a8f5156d"
         }
       ],
       "profiles": [
-        "stage2_base_performance"
+        "stage2_base_performance",
+        "source_structures_first_spike"
       ],
       "schema_version": 1,
       "target": "server"
     }
   },
   "profiles": [
-    "stage2_base_performance"
+    "stage2_base_performance",
+    "source_structures_first_spike"
   ],
   "provider_hash_evidence_run": {
     "generated_at": "2026-09-12",
@@ -326,11 +374,11 @@
     "workflow": "pack-hash.yml"
   },
   "schema_version": 1,
-  "server_file_count": 30,
+  "server_file_count": 34,
   "source_verification": {
     "terrain_diffusion_plus": {
       "model_assets_manifest_sha256": "d6ce77b3e475b85b0ac2a17d56be3b670b842648fd5e3958301951b98780cdbc",
-      "raw_sha256": "7c98fa86e15651a832028ce759cdfec025845c8309b0fde243600d77ad494926",
+      "raw_sha256": "07a78ad6f92f62b07de81d6701276758e9ab6be9d4cc10e286c40f1062fc3692",
       "verification_mode": "source_ref_plus_embedded_manifest"
     }
   }
