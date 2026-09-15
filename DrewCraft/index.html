@@ -156,6 +156,14 @@
       letter-spacing: -.035em;
     }
 
+    .version {
+      margin-top: 8px;
+      color: rgba(23,26,24,.58);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
     .note {
       margin: 18px 0 0;
       color: rgba(255,255,255,.42);
@@ -206,6 +214,11 @@
         font-size: clamp(15px, 5vw, 19px);
       }
 
+      .version {
+        margin-top: 6px;
+        font-size: 8px;
+      }
+
       .note {
         margin-top: 13px;
         font-size: 8px;
@@ -253,23 +266,59 @@
     <p class="summary">A huge, weather-beaten survival world built for journeys, machines, aircraft, danger, and friends.</p>
 
     <section class="downloads" aria-label="Download DrewCraft">
-      <a class="download" href="https://github.com/DrewPhi/DrewCraft/releases/latest/download/DrewCraft-Windows.exe">
+      <a class="download" data-platform="windows" href="https://github.com/DrewPhi/DrewCraft/releases/download/launcher-v0.1.5/DrewCraft-Windows-v0.1.5.exe">
         <small>Download for</small>
         <strong>Windows</strong>
+        <span class="version">v0.1.5</span>
       </a>
 
-      <a class="download" href="https://github.com/DrewPhi/DrewCraft/releases/latest/download/DrewCraft-macOS.dmg">
+      <a class="download" data-platform="macos" href="https://github.com/DrewPhi/DrewCraft/releases/download/launcher-v0.1.5/DrewCraft-macOS-v0.1.5.dmg">
         <small>Download for</small>
         <strong>macOS</strong>
+        <span class="version">v0.1.5</span>
       </a>
 
-      <a class="download" href="https://github.com/DrewPhi/DrewCraft/releases/latest/download/DrewCraft-Linux.deb">
+      <a class="download" data-platform="linux" href="https://github.com/DrewPhi/DrewCraft/releases/download/launcher-v0.1.5/DrewCraft-Linux-v0.1.5.deb">
         <small>Download for</small>
         <strong>Linux</strong>
+        <span class="version">v0.1.5</span>
       </a>
     </section>
 
-    <p class="note">Install once · self-updates on every run · Java, mods, configs, and updates are automatic · up to 8 GB RAM.</p>
+    <p class="note">Install once · self-updates on every run · Java, mods, configs, and updates are automatic · exactly 8 GB RAM.</p>
   </main>
+
+  <script>
+    (() => {
+      const api = 'https://api.github.com/repos/DrewPhi/DrewCraft/releases/latest';
+      const names = {
+        windows: version => `DrewCraft-Windows-v${version}.exe`,
+        macos: version => `DrewCraft-macOS-v${version}.dmg`,
+        linux: version => `DrewCraft-Linux-v${version}.deb`,
+      };
+
+      fetch(api, { headers: { Accept: 'application/vnd.github+json' } })
+        .then(response => {
+          if (!response.ok) throw new Error(`GitHub API ${response.status}`);
+          return response.json();
+        })
+        .then(release => {
+          const tag = String(release.tag_name || '');
+          const version = tag.replace(/^launcher-v/, '');
+          if (!version || version === tag) return;
+
+          for (const link of document.querySelectorAll('.download[data-platform]')) {
+            const platform = link.dataset.platform;
+            const filename = names[platform]?.(version);
+            const asset = release.assets?.find(item => item.name === filename);
+            if (!asset) continue;
+            link.href = asset.browser_download_url;
+            const label = link.querySelector('.version');
+            if (label) label.textContent = `v${version}`;
+          }
+        })
+        .catch(() => {});
+    })();
+  </script>
 </body>
 </html>
