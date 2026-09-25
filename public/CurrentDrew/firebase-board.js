@@ -299,10 +299,18 @@ syncConnect.addEventListener('click', async () => {
     syncStatus.textContent = 'Cloud sync needs one-time Firebase setup. Follow public/CurrentDrew/SETUP.md.';
     return;
   }
+  syncStatus.textContent = 'Opening GitHub sign-in…';
   try { await signInWithPopup(auth, new GithubAuthProvider()); }
   catch (error) {
     console.error('GitHub sign-in failed:', error);
-    syncStatus.textContent = error.code === 'auth/unauthorized-domain' ? 'Add drewphi.github.io to Firebase Authentication’s authorized domains.' : 'GitHub sign-in did not finish. Check the Firebase GitHub provider setup and try again.';
+    const messages = {
+      'auth/configuration-not-found': 'Firebase Authentication is not active yet. In Firebase, open Authentication → Get started, then enable the GitHub sign-in provider.',
+      'auth/operation-not-allowed': 'GitHub sign-in is not enabled yet. In Firebase Authentication → Sign-in method, enable GitHub and save its Client ID and Client secret.',
+      'auth/unauthorized-domain': 'Add drewphi.github.io to Firebase Authentication → Settings → Authorized domains.',
+      'auth/popup-blocked': 'Your browser blocked the GitHub sign-in popup. Allow popups for drewphi.github.io and try again.',
+      'auth/popup-closed-by-user': 'GitHub sign-in was closed before it finished. Try again.',
+    };
+    syncStatus.textContent = messages[error.code] || (error.message?.includes('CONFIGURATION_NOT_FOUND') ? messages['auth/configuration-not-found'] : `GitHub sign-in failed (${error.code || 'unknown error'}). Check Firebase Authentication setup.`);
   }
 });
 
@@ -371,8 +379,8 @@ if (configured) {
       onAuthStateChanged(auth, updateAuthControls);
     } catch (error) {
       console.error('Firebase initialization failed:', error);
-      syncStatus.textContent = 'Firebase could not start. Check the config and your connection.';
-      syncConnect.disabled = false;
+      syncStatus.textContent = 'Firebase could not start. Check your connection, then reload this page.';
+      syncConnect.disabled = true;
     }
   })();
 } else {
