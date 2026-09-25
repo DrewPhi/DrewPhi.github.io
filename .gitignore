@@ -11,8 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-sync-worker/.dev.vars*
-sync-worker/*.pem
 
 # Editor directories and files
 .vscode/*
