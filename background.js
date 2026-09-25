@@ -1,21 +1,17 @@
-const PARTICLE_COUNT = 1000;
-const NOISE_SCALE = 0.01 / 2;
-const PARTICLE_SPEED = 1.2;
-const BACKGROUND_DARK = [34, 38, 36];
-const BACKGROUND_ALPHA = [1, 2];
-
 let particles = [];
+const num = 1000;
+
+const noiseScale = 0.01 / 2;
+// Define initial colors
 let yellowColor;
 let silverWhiteColor;
-
+let colorChangeThreshold = 0.7; // Adjust this threshold value
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  yellowColor = color(255, 255, 161);
-  silverWhiteColor = color(34, 3, 31, 70);
+  yellowColor = color(255,255,161);
+  silverWhiteColor = color(34, 3, 31,70);
 
-  if (!particles.length) {
-    initializeParticles();
-  }
+  initializeParticles();
 
   stroke(255);
   strokeWeight(1.5);
@@ -23,19 +19,24 @@ function setup() {
 }
 
 windowResized = function() {
-  resizeCanvas(windowWidth, windowHeight);
-  clear();
-};
+ let tempParticles = particles;
+  noLoop();
+  canvas.remove(); // Remove the existing canvas
+  setup();
+  particles = tempParticles;
+  loop(); 
+}
 
-function draw() {
-  background(...BACKGROUND_DARK, random() > 0.99 ? BACKGROUND_ALPHA[1] : BACKGROUND_ALPHA[0]);
-
+function draw() { 
+  background(34,38,36,  random() > .99 ? 2 : 1);
   for (let i = particles.length - 1; i >= 0; i--) {
-    const particle = particles[i];
-    const p = particle.position;
+    let particle = particles[i];
+    let p = particle.position;
 
-    const n = noise(p.x * NOISE_SCALE, p.y * NOISE_SCALE, frameCount * NOISE_SCALE * NOISE_SCALE);
+    // Calculate color interpolation based on noise
+    let n = noise(p.x * noiseScale, p.y * noiseScale, frameCount * noiseScale * noiseScale);
 
+    // Determine the color based on the transition threshold
     let lerpedColor;
     if (n < particle.transitionThreshold) {
       lerpedColor = lerpColor(yellowColor, silverWhiteColor, n / particle.transitionThreshold);
@@ -46,20 +47,28 @@ function draw() {
     stroke(lerpedColor);
     point(p.x, p.y);
 
-    const a = TAU * n;
-    p.x += cos(a) * PARTICLE_SPEED;
-    p.y += sin(a) * PARTICLE_SPEED;
+    // Update particle position
+    let a = TAU * n;
+    p.x += cos(a) * 1.2;
+    p.y += sin(a) * 1.2;
 
+    // Check if the particle is off-screen
     if (!onScreen(p)) {
       p.x = windowWidth;
       p.y = random(windowHeight);
     }
+
+    // Update color change rate individually
+    particle.colorChangeRate += random(-0.02, 0.02); // Add some randomness
+
+    // Decrease particle lifespan
+
+    // Respawn particles with random lifespans greater than 5 seconds
+
   }
 }
-
 function keyReleased() {
 }
-
 function mouseReleased() {
   noiseSeed(millis());
 }
@@ -70,10 +79,12 @@ function onScreen(v) {
 
 function initializeParticles() {
   particles = [];
-  for (let i = 0; i < PARTICLE_COUNT; i++) {
+  for (let i = 0; i < num; i++) {
     particles.push({
       position: createVector(random(width), random(height)),
+      colorChangeRate: random(0.001, 0.01),
       transitionThreshold: random(0.5, 0.9),
+      lifespan: random(30, 30), // Random lifespan greater than 5 seconds
     });
   }
 }
