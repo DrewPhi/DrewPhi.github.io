@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#222624">
+  <meta name="description" content="A personal project board for goals, next steps, and deadlines.">
+  <title>CurrentDrew · Project Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{font-family:'Source Code Pro',monospace;color:#f7f8ed;background:#222624;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--yellow:#faff75;--muted:#aeb5ac;--line:rgba(250,255,117,.28)}
+    *{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(ellipse at 78% 5%,rgba(250,255,117,.08),transparent 36rem),#222624}
+    button,input,textarea{font:inherit}button{color:inherit}.shell{width:min(1120px,calc(100% - 40px));margin:auto;padding:54px 0 72px}
+    header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:2px solid transparent;border-image:linear-gradient(90deg,#fff,var(--yellow)) 1}
+    .eyebrow{margin:0 0 12px;color:var(--yellow);font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase}h1{margin:0;font-size:clamp(36px,7vw,66px);line-height:1;letter-spacing:-.075em}h1 span{color:var(--yellow)}
+    .header-actions{display:flex;gap:10px;flex-shrink:0}.btn{border:1px solid var(--line);background:rgba(255,255,255,.035);padding:10px 14px;font-size:11px;font-weight:700;cursor:pointer}.btn:hover,.btn:focus-visible{border-color:var(--yellow);outline:none}.btn-primary{background:var(--yellow);color:#222624;border-color:var(--yellow)}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;padding:20px 0 14px;color:var(--muted);font-size:11px}.toolbar strong{color:#fff}.count{color:var(--yellow)}.folder-section{margin:8px 0 28px}.folder-heading{display:flex;align-items:center;gap:10px;margin-bottom:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.12);color:var(--yellow);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.folder-count{color:var(--muted);font-size:10px;font-weight:400;letter-spacing:0}.folder-delete{margin-left:auto;padding:4px 7px;border:1px solid transparent;background:none;color:#8e978f;font-size:10px;cursor:pointer}.folder-delete:hover{border-color:var(--line);color:#fff}.folder-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:stretch;min-height:72px;padding:2px;transition:background .15s,border-color .15s}.folder-cards.drag-over{background:rgba(250,255,117,.06);outline:1px dashed var(--yellow)}.folder-empty{display:flex;align-items:center;justify-content:center;min-height:72px;border:1px dashed rgba(255,255,255,.13);color:#7f8980;font-size:10px;grid-column:1/-1}
+    .note{--note:#faff75;position:relative;display:flex;flex-direction:column;min-height:260px;padding:20px 19px 17px;background:color-mix(in srgb,var(--note) 9%,#222624);border:1px solid color-mix(in srgb,var(--note) 36%,transparent);box-shadow:0 14px 36px rgba(0,0,0,.15)}.note:before{content:'';position:absolute;top:-1px;left:18px;width:44px;height:5px;background:var(--note);opacity:.8}.note[data-tone="mint"]{--note:#a6e8c1}.note[data-tone="blue"]{--note:#a9ccff}.note[data-tone="pink"]{--note:#ffb3c7}.note[data-tone="orange"]{--note:#ffc78f}
+    .note-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;color:var(--note);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.drag-grip{cursor:grab;user-select:none;font-size:15px;letter-spacing:-.15em}.drag-grip:active{cursor:grabbing}.note-top select{max-width:120px;padding:4px 5px;color:var(--note);background:#252a27;border:1px solid color-mix(in srgb,var(--note) 30%,transparent);font-size:10px;text-transform:uppercase}.delete{border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer;padding:0 3px}.delete:hover{color:#fff}
+    .field{width:100%;color:#fff;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.12);outline:none}.field:focus{border-color:var(--note)}.title{padding:0 0 8px;font-size:18px;font-weight:700;letter-spacing:-.04em}.label{display:block;margin:15px 0 5px;color:var(--note);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.bullet-list{display:flex;flex-direction:column;gap:7px}.bullet-row{display:grid;grid-template-columns:10px minmax(0,1fr) 20px;align-items:start;gap:7px}.bullet-dot{padding-top:4px;color:var(--note);font-size:14px;line-height:1}.bullet-text{min-height:23px;padding:2px 0 5px;resize:none;overflow:hidden;font-size:11px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}.remove-bullet{padding:0;border:0;background:none;color:#859087;font-size:15px;line-height:20px;cursor:pointer}.remove-bullet:hover{color:#fff}.add-bullet{align-self:flex-start;margin-top:7px;padding:5px 0;border:0;background:none;color:var(--note);font-size:10px;font-weight:700;cursor:pointer}.add-bullet:hover{text-decoration:underline}.deadline-row{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:17px}.deadline-row .label{margin:0;white-space:nowrap}.date{padding:5px 0;color:#fff;font-size:10px;color-scheme:dark}.footer{padding-top:20px;color:#788078;font-size:10px;line-height:1.7}.empty{padding:50px 20px;border:1px dashed var(--line);color:var(--muted);text-align:center;font-size:12px;grid-column:1/-1}
+    @media(max-width:800px){.folder-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding-top:38px}}
+    @media(max-width:560px){.shell{width:calc(100% - 28px);padding-top:28px}.folder-cards{grid-template-columns:1fr}.note{min-height:230px}header{align-items:flex-start;flex-direction:column}.header-actions{width:100%}.header-actions .btn{flex:1}.toolbar{align-items:flex-start;gap:10px;flex-direction:column}}
+    .gate{min-height:100vh;display:grid;place-items:center;padding:24px}.gate[hidden],.shell[hidden]{display:none}.gate-card{width:min(420px,100%);padding:30px;background:rgba(34,38,36,.94);border:1px solid var(--line);box-shadow:0 20px 70px rgba(0,0,0,.38)}.gate-card h1{font-size:34px}.gate-card p{margin:14px 0 22px;color:var(--muted);font-size:12px;line-height:1.7}.gate-form{display:flex;gap:8px}.gate-input{min-width:0;flex:1;padding:11px 12px;color:#fff;background:#1d211f;border:1px solid var(--line);outline:none}.gate-input:focus{border-color:var(--yellow)}.gate-error{min-height:18px;margin:9px 0 0!important;color:#ffb3c7!important;font-size:11px!important}
+    .sync-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:2px 0 24px;padding:12px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.12)}.sync-copy{min-width:0}.sync-status{margin:0;color:var(--muted);font-size:10px;line-height:1.6}.sync-actions{display:flex;flex-shrink:0;gap:7px}.sync-actions .btn{padding:8px 11px}.sync-actions .btn:disabled{opacity:.4;cursor:not-allowed}@media(max-width:560px){.sync-bar{align-items:flex-start;flex-direction:column}.sync-actions{width:100%}.sync-actions .btn{flex:1}}
+  </style>
+</head>
+<body>
+  <main class="gate" id="gate">
+    <section class="gate-card" aria-labelledby="gate-title">
+      <p class="eyebrow">Private project board</p>
+      <h1 id="gate-title">Current<span>Drew</span></h1>
+      <p>Enter the passphrase to open your project board.</p>
+      <form class="gate-form" id="gate-form">
+        <input class="gate-input" id="passphrase" type="password" autocomplete="current-password" placeholder="Passphrase" aria-label="Passphrase" required autofocus>
+        <button class="btn btn-primary" type="submit">Unlock</button>
+      </form>
+      <p class="gate-error" id="gate-error" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <main class="shell" id="project-board" hidden>
+    <header>
+      <div><p class="eyebrow">Personal project board</p><h1>Current<span>Drew</span></h1></div>
+      <div class="header-actions"><button class="btn" id="export" type="button">Export backup</button><button class="btn btn-primary" id="add" type="button">+ Add project</button></div>
+    </header>
+    <div class="toolbar"><span><strong>IN PROGRESS</strong> <span class="count" id="count"></span></span><button class="btn" id="add-folder" type="button">+ Add folder</button><span>Changes save automatically in this browser</span></div>
+    <section class="sync-bar" aria-label="Cloud sync">
+      <div class="sync-copy"><p class="eyebrow" style="margin:0 0 4px">GitHub sync</p><p class="sync-status" id="sync-status" role="status" aria-live="polite">Connect your GitHub account to sync this board between computers. The shared JSON is public.</p></div>
+      <div class="sync-actions"><button class="btn" id="sync-connect" type="button">Connect GitHub</button><button class="btn" id="sync-pull" type="button" disabled>Pull</button><button class="btn btn-primary" id="sync-push" type="button" disabled>Push</button><button class="btn" id="sync-disconnect" type="button" hidden>Disconnect</button></div>
+    </section>
+    <div id="board" aria-label="Project folders"></div>
+    <p class="footer">Local changes save in this browser · Push and Pull syncs the board through GitHub · Export a backup anytime.</p>
+  </main>
+  <template id="card-template">
+    <article class="note">
+      <div class="note-top" title="Drag this card by its top bar into a folder"><span class="drag-grip" aria-hidden="true">⠿</span><select aria-label="Project status"><option>In progress</option><option>Next up</option><option>On hold</option><option>Done</option></select><button class="delete" type="button" aria-label="Delete project" title="Delete project">×</button></div>
+      <input class="field title" aria-label="Project name" placeholder="Project name">
+      <label class="label">Goal</label><div class="bullet-list goals"></div><button class="add-bullet add-goal" type="button">+ Add goal</button>
+      <label class="label">Next step</label><div class="bullet-list steps"></div><button class="add-bullet add-step" type="button">+ Add next step</button>
+      <div class="deadline-row"><span class="label">Deadline</span><input class="field date" type="date" aria-label="Deadline"></div>
+    </article>
+  </template>
+  <script>
+    (() => {
+      const key = 'currentdrew-projects-v1';
+      const passphraseSalt = '664267d71d0b5c299b526fd57e066ba5';
+      const passphraseHash = '27bb0d0aaa0a30c4696459840f8f1755c6e688faa1924a5d1fc41844c655e544';
+      const gate = document.querySelector('#gate');
+      const boardPage = document.querySelector('#project-board');
+      const gateForm = document.querySelector('#gate-form');
+      const gateError = document.querySelector('#gate-error');
+      const syncStatus = document.querySelector('#sync-status');
+      const syncConnect = document.querySelector('#sync-connect');
+      const syncPull = document.querySelector('#sync-pull');
+      const syncPush = document.querySelector('#sync-push');
+      const syncDisconnect = document.querySelector('#sync-disconnect');
+      const syncApiUrl = '';
+      let syncSession = null;
+      let lastRemote = null;
+      const hex = bytes => Array.from(new Uint8Array(bytes), byte => byte.toString(16).padStart(2, '0')).join('');
+      function receiveOAuthResult() {
+        if (!location.hash.includes('sync_session=') && !location.hash.includes('sync_error=')) return;
+        const result = new URLSearchParams(location.hash.slice(1));
+        const expectedState = sessionStorage.getItem('currentdrew-oauth-state');
+        const receivedState = result.get('state');
+        sessionStorage.removeItem('currentdrew-oauth-state');
+        history.replaceState(null, '', `${location.pathname}${location.search}`);
+        if (!expectedState || expectedState !== receivedState) {
+          syncStatus.textContent = 'GitHub sign-in could not be verified. Try connecting again.';
+          return;
+        }
+        if (result.has('sync_error')) {
+          syncStatus.textContent = `GitHub sign-in failed: ${result.get('sync_error')}`;
+          return;
+        }
+        syncSession = result.get('sync_session');
+      }
+      function updateSyncControls() {
+        const connected = Boolean(syncSession);
+        syncConnect.hidden = connected;
+        syncDisconnect.hidden = !connected;
+        syncPull.disabled = !connected;
+        syncPush.disabled = !connected;
+        if (connected) syncStatus.textContent = 'Signed in with GitHub. Pull to load the latest board, or push your changes.';
+      }
+      receiveOAuthResult();
+      syncConnect.addEventListener('click', () => {
+        if (!syncApiUrl) {
+          syncStatus.textContent = 'GitHub sync is not configured yet. The one-time setup guide is in the project repository.';
+          return;
+        }
+        const state = hex(crypto.getRandomValues(new Uint8Array(24)));
+        sessionStorage.setItem('currentdrew-oauth-state', state);
+        const start = new URL('/auth/start', syncApiUrl);
+        start.searchParams.set('state', state);
+        location.assign(start.href);
+      });
+      syncDisconnect.addEventListener('click', () => {
+        syncSession = null; lastRemote = null; updateSyncControls();
+        syncStatus.textContent = 'Disconnected. Your local board is still saved in this browser.';
+      });
+      gateForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const submit = gateForm.querySelector('button[type="submit"]');
+        submit.disabled = true;
+        gateError.textContent = '';
+        try {
+          const passphraseKey = await crypto.subtle.importKey('raw', new TextEncoder().encode(document.querySelector('#passphrase').value), 'PBKDF2', false, ['deriveBits']);
+          const salt = Uint8Array.from(passphraseSalt.match(/.{2}/g), byte => parseInt(byte, 16));
+          const derived = await crypto.subtle.deriveBits({name:'PBKDF2', hash:'SHA-256', salt, iterations:600000}, passphraseKey, 256);
+          if (hex(derived) !== passphraseHash) {
+            gateError.textContent = 'That passphrase did not match. Try again.';
+            document.querySelector('#passphrase').select();
+            return;
+          }
+          gate.hidden = true;
+          boardPage.hidden = false;
+          sessionStorage.setItem('currentdrew-unlocked','1');
+          updateSyncControls();
+        } catch {
+          gateError.textContent = 'Your browser could not verify the passphrase. Try a current browser.';
+        } finally {
+          submit.disabled = false;
+        }
+      });
+      if (sessionStorage.getItem('currentdrew-unlocked') === '1') {
+        gate.hidden = true;
+        boardPage.hidden = false;
+        updateSyncControls();
+      }
+      const tones = ['yellow', 'mint', 'blue', 'pink', 'orange'];
+      const folderKey = 'currentdrew-folders-v1';
+      const board = document.querySelector('#board');
+      const template = document.querySelector('#card-template');
+      const makeId = () => crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      let projects = [];
+      let folders = [];
+      try { projects = JSON.parse(localStorage.getItem(key) || '[]'); if (!Array.isArray(projects)) projects = []; } catch { projects = []; }
+      try { folders = JSON.parse(localStorage.getItem(folderKey) || '[]'); if (!Array.isArray(folders)) folders = []; } catch { folders = []; }
+      if (!folders.some(folder => folder.id === 'unfiled')) folders.unshift({id:'unfiled',name:'Unfiled'});
+      projects.forEach(project => {
+        project.id ||= makeId();
+        project.folderId ||= 'unfiled';
+      });
+      const save = () => {
+        localStorage.setItem(key, JSON.stringify(projects));
+        localStorage.setItem(folderKey, JSON.stringify(folders));
+      };
+      const persist = () => { save(); render(); };
+      function createCard(project, index) {
+        const card = template.content.firstElementChild.cloneNode(true);
+        card.dataset.tone = tones[index % tones.length];
+        const title = card.querySelector('.title'); const date = card.querySelector('.date'); const status = card.querySelector('select');
+        title.value = project.title || ''; date.value = project.deadline || ''; status.value = project.status || 'In progress';
+        // Convert notes created by earlier versions into editable bullet lists.
+        project.goals = Array.isArray(project.goals) ? project.goals : (project.goal ? [project.goal] : []);
+        project.steps = Array.isArray(project.steps) ? project.steps : (project.next ? [project.next] : []);
+        delete project.goal; delete project.next;
+        [[title,'title'],[date,'deadline'],[status,'status']].forEach(([el, field]) => el.addEventListener('input', () => { project[field] = el.value; save(); if (field === 'status') render(); }));
+        const addBullet = (field, list, focusNew = true, existingIndex = null) => {
+          const itemIndex = existingIndex === null ? project[field].length : existingIndex;
+          if (existingIndex === null) project[field].push('');
+          const row = document.createElement('div'); row.className = 'bullet-row';
+          const dot = document.createElement('span'); dot.className = 'bullet-dot'; dot.textContent = '•';
+          const input = document.createElement('textarea'); input.className = 'field bullet-text'; input.rows = 1; input.setAttribute('aria-label', field === 'goals' ? 'Goal bullet' : 'Next step bullet');
+          input.value = project[field][itemIndex];
+          const remove = document.createElement('button'); remove.className = 'remove-bullet'; remove.type = 'button'; remove.setAttribute('aria-label', 'Remove bullet'); remove.textContent = '×';
+          const resize = () => { input.style.height = 'auto'; input.style.height = `${input.scrollHeight}px`; };
+          input.addEventListener('input', () => { project[field][itemIndex] = input.value; resize(); save(); });
+          remove.addEventListener('click', () => { project[field].splice(itemIndex, 1); save(); render(); });
+          row.append(dot, input, remove); list.append(row); resize(); if (focusNew) input.focus(); save();
+        };
+        const goals = card.querySelector('.goals'); const steps = card.querySelector('.steps');
+        project.goals.forEach((_, bulletIndex) => addBullet('goals', goals, false, bulletIndex));
+        project.steps.forEach((_, bulletIndex) => addBullet('steps', steps, false, bulletIndex));
+        card.querySelector('.add-goal').addEventListener('click', () => addBullet('goals', goals));
+        card.querySelector('.add-step').addEventListener('click', () => addBullet('steps', steps));
+        card.querySelector('.delete').addEventListener('click', () => {
+          const name = project.title.trim() || 'this project';
+          if (!window.confirm(`Are you sure you want to delete ${name}?`)) return;
+          projects.splice(index, 1); persist();
+        });
+        const dragGrip = card.querySelector('.drag-grip');
+        dragGrip.draggable = true;
+        dragGrip.addEventListener('dragstart', event => { event.dataTransfer.setData('text/plain', project.id); event.dataTransfer.effectAllowed = 'move'; });
+        return card;
+      }
+      function render() {
+        board.replaceChildren();
+        document.querySelector('#count').textContent = String(projects.filter(project => project.status !== 'Done').length).padStart(2, '0');
+        folders.forEach(folder => {
+          const section = document.createElement('section'); section.className = 'folder-section';
+          const heading = document.createElement('div'); heading.className = 'folder-heading';
+          const folderName = document.createElement('span'); folderName.textContent = `▰ ${folder.name}`;
+          const folderCount = document.createElement('span'); folderCount.className = 'folder-count';
+          const inFolder = projects.filter(project => project.folderId === folder.id);
+          folderCount.textContent = `${inFolder.length} ${inFolder.length === 1 ? 'project' : 'projects'}`;
+          heading.append(folderName, folderCount);
+          if (folder.id !== 'unfiled') {
+            const removeFolder = document.createElement('button'); removeFolder.type = 'button'; removeFolder.className = 'folder-delete'; removeFolder.textContent = 'Delete folder';
+            removeFolder.addEventListener('click', () => {
+              if (!window.confirm(`Delete the “${folder.name}” folder? Its cards will move to Unfiled.`)) return;
+              projects.forEach(project => { if (project.folderId === folder.id) project.folderId = 'unfiled'; });
+              folders = folders.filter(item => item.id !== folder.id); persist();
+            });
+            heading.append(removeFolder);
+          }
+          const cards = document.createElement('div'); cards.className = 'folder-cards';
+          cards.addEventListener('dragover', event => { event.preventDefault(); cards.classList.add('drag-over'); event.dataTransfer.dropEffect = 'move'; });
+          cards.addEventListener('dragleave', event => { if (!cards.contains(event.relatedTarget)) cards.classList.remove('drag-over'); });
+          cards.addEventListener('drop', event => {
+            event.preventDefault(); cards.classList.remove('drag-over');
+            const project = projects.find(item => item.id === event.dataTransfer.getData('text/plain'));
+            if (!project || project.folderId === folder.id) return;
+            project.folderId = folder.id; persist();
+          });
+          if (!inFolder.length) { const empty = document.createElement('div'); empty.className = 'folder-empty'; empty.textContent = 'Drop project cards here'; cards.append(empty); }
+          else inFolder.forEach(project => cards.append(createCard(project, projects.indexOf(project))));
+          section.append(heading, cards); board.append(section);
+        });
+        save();
+      }
+      document.querySelector('#add-folder').addEventListener('click', () => {
+        const name = window.prompt('Name your new folder:')?.trim();
+        if (!name) return;
+        if (folders.some(folder => folder.name.toLowerCase() === name.toLowerCase())) { window.alert('A folder with that name already exists.'); return; }
+        folders.push({id:makeId(),name}); persist();
+      });
+      document.querySelector('#add').addEventListener('click', () => { projects.unshift({id:makeId(),folderId:'unfiled',title:'',goals:[],steps:[],deadline:'',status:'In progress'}); persist(); board.querySelector('.title')?.focus(); });
+      document.querySelector('#export').addEventListener('click', () => { const blob = new Blob([JSON.stringify({folders,projects}, null, 2)], {type:'application/json'}); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'currentdrew-projects.json'; link.click(); URL.revokeObjectURL(link.href); });
+      async function boardRequest(method, body) {
+        const response = await fetch(`${syncApiUrl}/api/board`, {
+          method,
+          headers: {
+            Authorization:`Bearer ${syncSession}`,
+            Accept:'application/json',
+            ...(body ? {'Content-Type':'application/json'} : {}),
+          },
+          cache:'no-store',
+          ...(body ? {body:JSON.stringify(body)} : {}),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          if (response.status === 401) {
+            syncSession = null; lastRemote = null; updateSyncControls();
+          }
+          const error = new Error(result.error || `Sync service returned ${response.status}.`);
+          error.status = response.status;
+          throw error;
+        }
+        return result;
+      }
+      function setSyncBusy(busy) { syncPull.disabled = busy || !syncSession; syncPush.disabled = busy || !syncSession; }
+      syncPull.addEventListener('click', async () => {
+        setSyncBusy(true); syncStatus.textContent = 'Loading your GitHub board…';
+        try {
+          const remote = await boardRequest('GET');
+          if (!remote.exists) { lastRemote = {exists:false,sha:null}; syncStatus.textContent = 'No cloud board yet. Push this board to create it.'; return; }
+          if (!Array.isArray(remote.board?.projects) || !Array.isArray(remote.board?.folders)) throw new Error('The cloud board file has an unexpected format.');
+          const hasLocalData = projects.length > 0;
+          if (hasLocalData && !window.confirm('Pulling replaces the projects and folders on this computer with the cloud board. Continue?')) {
+            syncStatus.textContent = 'Pull cancelled. Your local board was left unchanged.'; return;
+          }
+          projects = remote.board.projects; folders = remote.board.folders;
+          if (!folders.some(folder => folder.id === 'unfiled')) folders.unshift({id:'unfiled',name:'Unfiled'});
+          projects.forEach(project => { project.id ||= makeId(); project.folderId ||= 'unfiled'; });
+          lastRemote = {exists:true,sha:remote.sha}; save(); render();
+          localStorage.setItem('currentdrew-website-improvements-seeded-v1','1');
+          syncStatus.textContent = `Pulled ${projects.length} projects from GitHub.`;
+        } catch (error) { syncStatus.textContent = error.message || 'Could not pull the cloud board.'; }
+        finally { setSyncBusy(false); }
+      });
+      syncPush.addEventListener('click', async () => {
+        if (!lastRemote) { syncStatus.textContent = 'Pull first so I can check for changes from another computer.'; return; }
+        setSyncBusy(true); syncStatus.textContent = 'Saving your board to GitHub…';
+        try {
+          const saved = await boardRequest('PUT', {expectedSha:lastRemote.sha,board:{version:1,folders,projects}});
+          lastRemote = {exists:true,sha:saved.sha};
+          syncStatus.textContent = `Pushed ${projects.length} projects to GitHub.`;
+        } catch (error) {
+          if (error.status === 409) syncStatus.textContent = 'The cloud board changed since your last pull. Pull it first, then review and push again.';
+          else syncStatus.textContent = error.message || 'Could not push the board.';
+        }
+        finally { setSyncBusy(false); }
+      });
+      // Add the requested starter card once per browser. Cards remain local to that browser.
+      if (!localStorage.getItem('currentdrew-website-improvements-seeded-v1') && !projects.some(project => project.title === 'Website improvements')) {
+        projects.push({id:makeId(),folderId:'unfiled',title:'Website improvements',goals:[],steps:[],deadline:'',status:'Next up'});
+        localStorage.setItem('currentdrew-website-improvements-seeded-v1','1');
+      }
+      render();
+    })();
+  </script>
+</body>
+</html>
