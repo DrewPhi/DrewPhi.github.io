@@ -22,6 +22,7 @@ const template = document.querySelector('#card-template');
 const makeId = () => crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 const hex = bytes => Array.from(new Uint8Array(bytes), byte => byte.toString(16).padStart(2, '0')).join('');
 const configured = !firebaseConfig.projectId.startsWith('REPLACE_') && !firebaseConfig.apiKey.startsWith('REPLACE_') && !firebaseConfig.appId.startsWith('REPLACE_');
+const nativeBulletSizing = CSS.supports('field-sizing', 'content');
 const tones = ['yellow', 'mint', 'blue', 'pink', 'orange'];
 let projects = [];
 let folders = [];
@@ -87,6 +88,7 @@ function save() {
 function persist() { save(); render(); }
 
 function resizeBullet(input) {
+  if (nativeBulletSizing || !input.isConnected || !input.clientWidth) return;
   input.style.height = 'auto';
   input.style.height = `${input.scrollHeight + 2}px`;
 }
@@ -207,9 +209,12 @@ function render() {
     board.append(section);
   });
   resizeVisibleBullets();
+  requestAnimationFrame(resizeVisibleBullets);
 }
 
 window.addEventListener('resize', resizeVisibleBullets);
+window.addEventListener('pageshow', resizeVisibleBullets);
+document.fonts?.ready.then(resizeVisibleBullets);
 
 function setBoardData(data) {
   if (!Array.isArray(data?.projects) || !Array.isArray(data?.folders)) throw new Error('The saved board has an unexpected format.');
