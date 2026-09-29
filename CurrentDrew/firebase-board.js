@@ -86,6 +86,15 @@ function save() {
 
 function persist() { save(); render(); }
 
+function resizeBullet(input) {
+  input.style.height = 'auto';
+  input.style.height = `${input.scrollHeight + 2}px`;
+}
+
+function resizeVisibleBullets() {
+  board.querySelectorAll('.bullet-text').forEach(resizeBullet);
+}
+
 function createCard(project, index) {
   const card = template.content.firstElementChild.cloneNode(true);
   card.dataset.tone = tones[index % tones.length];
@@ -122,12 +131,11 @@ function createCard(project, index) {
     remove.type = 'button';
     remove.setAttribute('aria-label', 'Remove bullet');
     remove.textContent = '×';
-    const resize = () => { input.style.height = 'auto'; input.style.height = `${input.scrollHeight}px`; };
-    input.addEventListener('input', () => { project[field][itemIndex] = input.value; resize(); save(); });
+    input.addEventListener('input', () => { project[field][itemIndex] = input.value; resizeBullet(input); save(); });
     remove.addEventListener('click', () => { project[field].splice(itemIndex, 1); persist(); });
     row.append(dot, input, remove);
     list.append(row);
-    resize();
+    if (input.isConnected) resizeBullet(input);
     if (focusNew) input.focus();
     if (existingIndex === null) save();
   };
@@ -198,7 +206,10 @@ function render() {
     section.append(heading, cards);
     board.append(section);
   });
+  resizeVisibleBullets();
 }
+
+window.addEventListener('resize', resizeVisibleBullets);
 
 function setBoardData(data) {
   if (!Array.isArray(data?.projects) || !Array.isArray(data?.folders)) throw new Error('The saved board has an unexpected format.');
@@ -282,6 +293,7 @@ gateForm.addEventListener('submit', async event => {
     }
     gate.hidden = true;
     boardPage.hidden = false;
+    resizeVisibleBullets();
     sessionStorage.setItem('currentdrew-unlocked','1');
     if (currentUser) startCloudSync(currentUser);
   } catch {
